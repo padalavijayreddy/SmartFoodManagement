@@ -1,0 +1,1 @@
+export { FoodManagementHomePage } from './FoodManagementHomePage'

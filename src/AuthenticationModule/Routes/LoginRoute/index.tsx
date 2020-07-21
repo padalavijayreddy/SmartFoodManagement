@@ -6,9 +6,10 @@ import { API_FETCHING } from '@ib/api-constants'
 import { LoginPage } from '../../components/LoginPage'
 import { isLoggedIn } from '../../utils/AuthUtils'
 import { login } from '../../../CommonModule/i18nStrings/strings.json'
-import { AuthStore } from '../../stores/AuthStore'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import i18n from '../../../CommonModule/i18n'
+import { AuthStore } from '../../stores/AuthStore'
+import { SMART_FOOD_MANAGEMENT_HOME_PATH } from '../../../SmartFoodManagementModule/constants/NavigationConstants'
 
 interface historyProps extends RouteComponentProps, WithTranslation {}
 
@@ -54,16 +55,16 @@ class LoginRoute extends React.Component<historyProps> {
    }
 
    @action.bound
-   onChangeUsername(event) {
-      this.username = event.target.value
+   onChangeUsername(value: any) {
+      this.username = value
       this.errorType = this.username.length > 1 ? '' : this.errorType
       this.usernameErrorMessage =
          this.username.length > 1 ? '' : this.usernameErrorMessage
    }
 
    @action.bound
-   onChangePassword(event) {
-      this.password = event.target.value
+   onChangePassword(value: any) {
+      this.password = value
       this.errorType = this.password.length > 1 ? '' : this.errorType
       this.passwordErrorMessage =
          this.password.length > 1 ? '' : this.passwordErrorMessage
@@ -72,7 +73,7 @@ class LoginRoute extends React.Component<historyProps> {
    @action.bound
    onSignInSuccess() {
       const { history } = this.props
-      alert('Hi User')
+      history.replace(SMART_FOOD_MANAGEMENT_HOME_PATH)
    }
 
    onSignInFailure = () => {
@@ -108,8 +109,7 @@ class LoginRoute extends React.Component<historyProps> {
    }
 
    renderContentManagementPortal = () => {
-      // return <Redirect to={CODING_QUESTIONS_LIST_PATH} />
-      return 'Hi User'
+      return <Redirect to={SMART_FOOD_MANAGEMENT_HOME_PATH} />
    }
 
    onChangeLanguage = value => {

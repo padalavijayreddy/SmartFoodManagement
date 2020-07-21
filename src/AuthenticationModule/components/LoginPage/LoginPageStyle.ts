@@ -122,8 +122,16 @@ export const MainDiv = styled.div`
    `,
    Buttons = styled.button`
       ${tw`text-center p-5 m-2 hover:bg-blue-700 bg-blue-200 h-12 w-20`}
+   `,
+   ButtonStyles = css`
+      ${tw` flex justify-center text-center text-white rounded focus:outline-none focus:shadow-outline`}
+      background:#0b69ff;
+      cursor: 'pointer';
+      padding: 8px 16px;
+      width: 270px;
+      font-size: 14px;
+      height: 35px;
    `
-
 const SubmitButton = styled.div`
    ${tw` flex flex-col items-center justify-center mb-2`}
 `

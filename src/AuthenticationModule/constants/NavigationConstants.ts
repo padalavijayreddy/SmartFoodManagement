@@ -1,1 +1,1 @@
-export const LOGIN_PATH = '/Content-Management-Portal/login/'
+export const LOGIN_PATH = '/Smart-Food-Management/login/'

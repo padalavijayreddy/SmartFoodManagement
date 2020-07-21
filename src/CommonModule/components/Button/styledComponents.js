@@ -8,13 +8,5 @@ export const StyledButton = styled.button`
 `
 
 export const LoginButton = styled.button`
-    {
-      ${tw` flex justify-center text-center text-white rounded focus:outline-none focus:shadow-outline`}
-      background:#0b69ff;
-      cursor: 'pointer';
-      padding: 8px 16px;
-      width: 270px;
-      font-size: 14px;
-      height: 35px;
-   }
+   ${props => props.ButtonStyles}
 `

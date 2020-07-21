@@ -1,13 +1,15 @@
 import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Provider } from 'mobx-react'
+import { Provider, observer } from 'mobx-react'
 import { I18nextProvider } from 'react-i18next'
 import HomePage from './CommonModule/components/HomePage'
-import stores from './CommonModule/stores'
 import './App.css'
 import i18n from './CommonModule/i18n'
 import { AuthRoutes } from './AuthenticationModule/Routes'
+import stores from './CommonModule/stores'
+import { SmartFoodManagementHomePageRoutes } from './SmartFoodManagementModule/routes'
 
+@observer
 class App extends React.Component {
    render() {
       return (
@@ -17,6 +19,7 @@ class App extends React.Component {
                   <Router basename={process.env.PUBLIC_URL}>
                      <Switch>
                         {AuthRoutes}
+                        {SmartFoodManagementHomePageRoutes}
                         <Route path='/'>
                            <HomePage />
                         </Route>

@@ -1,19 +1,18 @@
 import { create } from 'apisauce'
 import { networkCallWithApisauce } from '../../utils/APIUtils'
 import { apiMethods } from '../../constants/APIConstants'
-
+import Config from '../../../CommonModule/constants/EnvironmentConstants'
+import { endpoints } from '../endpoints'
 class AuthAPI {
    api
    constructor() {
-      this.api = create({
-         baseURL: 'https://75183e2f2111.ngrok.io/api/content_management_portal/'
-      })
+      this.api = create({ baseURL: Config.BASE_URL })
    }
 
    signInAPI = requestObject => {
       return networkCallWithApisauce(
          this.api,
-         'login/v1/',
+         endpoints.login,
          requestObject,
          apiMethods.post
       )

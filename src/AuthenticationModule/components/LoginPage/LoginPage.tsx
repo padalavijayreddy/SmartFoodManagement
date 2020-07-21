@@ -15,6 +15,7 @@ import {
    SubmitButton,
    Footer,
    LoginButton,
+   ButtonStyles,
    NoAccount,
    AnchorTag,
    InputDiv,
@@ -25,7 +26,6 @@ import {
 import i18n from '../../../CommonModule/i18n'
 import { observable } from 'mobx'
 import { withTranslation, WithTranslation } from 'react-i18next'
-import Loader from '../../../CommonModule/common/Icons/Loader/SvgFile'
 import { login } from '../../../CommonModule/i18nStrings/strings.json'
 import { InputField } from '../../../CommonModule/components/InputField'
 import Button from '../../../CommonModule/components/Button/Button'
@@ -50,11 +50,21 @@ interface LoginProps extends WithTranslation {
 class LoginPage extends React.Component<LoginProps> {
    @observable isErrorPresent: boolean = false
 
+   changeUserName = (event: React.FormEvent<HTMLInputElement>) => {
+      const { onChangeUsername } = this.props
+      const newUserNameValue = event.currentTarget.value
+      onChangeUsername(newUserNameValue)
+   }
+
+   changePassword = (event: React.FormEvent<HTMLInputElement>) => {
+      const { onChangePassword } = this.props
+      const newPasswordValue = event.currentTarget.value
+      onChangePassword(newPasswordValue)
+   }
+
    render() {
       const {
          t,
-         onChangeUsername,
-         onChangePassword,
          username,
          password,
          onSubmit,
@@ -87,7 +97,7 @@ class LoginPage extends React.Component<LoginProps> {
                         <InputField
                            placeholder='Username'
                            reference={userNameRef}
-                           onChange={onChangeUsername}
+                           onChange={this.changeUserName}
                            value={username}
                            id={login.username}
                            type='text'
@@ -108,7 +118,7 @@ class LoginPage extends React.Component<LoginProps> {
                            placeholder='Password'
                            data-testid='password'
                            reference={passwordRef}
-                           onChange={onChangePassword}
+                           onChange={this.changePassword}
                            value={password}
                            id={login.password}
                            type='password'
@@ -123,7 +133,7 @@ class LoginPage extends React.Component<LoginProps> {
                   </PasswordFieldContainerDiv>
                </FieldsDiv>
                <SubmitButton>
-                  <Button {...{ isLoading, onSubmit }} />
+                  <Button {...{ ButtonStyles, isLoading, onSubmit }} />
                   <ErrorMessage>{errorMessage}</ErrorMessage>
                </SubmitButton>
                <Footer>

@@ -1,0 +1,1 @@
+export { HomePageRoutes } from './HomePageRoutes'
