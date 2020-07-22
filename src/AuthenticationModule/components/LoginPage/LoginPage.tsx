@@ -133,7 +133,12 @@ class LoginPage extends React.Component<LoginProps> {
                   </PasswordFieldContainerDiv>
                </FieldsDiv>
                <SubmitButton>
-                  <Button {...{ ButtonStyles, isLoading, onSubmit }} />
+                  <Button
+                     text={login.login}
+                     onClick={onSubmit}
+                     dataTestId='sign-in-button'
+                     {...{ isLoading, ButtonStyles }}
+                  />
                   <ErrorMessage>{errorMessage}</ErrorMessage>
                </SubmitButton>
                <Footer>

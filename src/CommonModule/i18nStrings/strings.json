@@ -166,5 +166,9 @@
       "dontHaveAnAccount": "Don’t have an account?",
       "signup": "Signup",
       "login": "LOGIN"
+   },
+   "CommonHeader": {
+      "Home": "HOME",
+      "WeeklyMenu": "Weekly Menu"
    }
 }

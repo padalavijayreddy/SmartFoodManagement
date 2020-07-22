@@ -1,28 +1,32 @@
 import React from 'react'
 import { LoginButton } from './styledComponents'
 import Loader from '../../common/Icons/Loader/SvgFile'
+import { ButtonStyles } from '../../../AuthenticationModule/components/LoginPage/LoginPageStyle'
 
-export const Button = ({ isLoading, onSubmit, SignIntext, ButtonStyles }) => {
-   const isClickable = onSubmit ? true : false
+export const Button = ({
+   text,
+   disabled,
+   onClick,
+   dataTestId,
+   ButtonStyles,
+   isLoading
+}) => {
    return (
       <LoginButton
-         disabled={isLoading}
-         data-testid='sign-in-button'
-         onClick={onSubmit}
-         type='button'
+         disabled={disabled}
+         onClick={onClick}
+         data-testid={dataTestId}
          ButtonStyles={ButtonStyles}
       >
-         {isLoading ? (
-            <Loader fill='white' height={25} width={25} />
-         ) : (
-            SignIntext
-         )}
+         {isLoading ? <Loader fill='white' height={25} width={25} /> : text}
       </LoginButton>
    )
 }
 
 Button.defaultProps = {
-   SignIntext: 'LOGIN'
+   SignIntext: 'SUBMIT',
+   disabled: false,
+   isLoading: false
 }
 
 export default Button

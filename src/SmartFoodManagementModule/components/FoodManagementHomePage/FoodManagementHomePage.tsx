@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Header } from '../../../CommonModule/components/Header'
 import { observer } from 'mobx-react'
+import WithHeaderComponent from '../../../CommonModule/hocs/withHeader'
 
 interface HomePageProps {
    shouldDisplayCart: boolean
@@ -11,17 +12,8 @@ interface HomePageProps {
 @observer
 class FoodManagementHomePage extends Component<HomePageProps> {
    render() {
-      const { shouldDisplayCart, toggleDisplayCart, signOut } = this.props
-      return (
-         <div>
-            <Header
-               toggleDisplayCart={toggleDisplayCart}
-               shouldDisplayCart={shouldDisplayCart}
-               signOut={signOut}
-            />
-         </div>
-      )
+      return <div>vijay</div>
    }
 }
 
-export { FoodManagementHomePage }
+export default WithHeaderComponent(FoodManagementHomePage)

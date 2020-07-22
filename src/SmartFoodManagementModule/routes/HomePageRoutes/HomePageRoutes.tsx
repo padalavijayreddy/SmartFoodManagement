@@ -1,7 +1,7 @@
 import React from 'react'
 import { observable, action } from 'mobx'
 import { observer, inject } from 'mobx-react'
-import { FoodManagementHomePage } from '../../components/FoodManagementHomePage'
+import FoodManagementHomePage from '../../components/FoodManagementHomePage'
 import { AuthStore } from '../../../AuthenticationModule/stores/AuthStore'
 import { LOGIN_PATH } from '../../../AuthenticationModule/constants/NavigationConstants'
 import { RouteComponentProps } from 'react-router-dom'

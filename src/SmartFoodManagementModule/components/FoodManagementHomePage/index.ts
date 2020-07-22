@@ -1,1 +1,2 @@
-export { FoodManagementHomePage } from './FoodManagementHomePage'
+import FoodManagementHomePage from './FoodManagementHomePage'
+export default FoodManagementHomePage

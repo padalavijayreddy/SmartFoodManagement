@@ -3,26 +3,43 @@ import {
    TopBar,
    SignOutbutton,
    NotificationIcon,
-   HeaderNotify
+   HeaderNotify,
+   ButtonStyles
 } from './HeaderStyle'
 import { header } from '../../i18nStrings/strings.json'
 import { Profile } from '../Profile'
 import { Notification } from '../Notification'
 import { toast, Zoom } from 'react-toastify'
-
-toast.configure({
-   background: 'black',
-   position: 'center'
-})
+import Button from '../Button/Button'
+import { CommonHeader } from '../../i18nStrings/strings.json'
 
 class Header extends React.Component {
+   onChangeHome = () => {
+      alert('HOME PAGE')
+   }
+
+   onChangeWeeklyMenu = () => {
+      alert('Weekly Menu')
+   }
+
    render() {
       const { signOut, toggleDisplayCart, shouldDisplayCart } = this.props
-      const { notify } = this
       return (
          <TopBar>
             <img src={header.ibhubsLogoURL}></img>
             <HeaderNotify>
+               <Button
+                  text={CommonHeader.Home}
+                  onClick={this.onChangeHome}
+                  dataTestId='Home-button'
+                  {...{ ButtonStyles }}
+               />
+               <Button
+                  text={CommonHeader.WeeklyMenu}
+                  onClick={this.onChangeWeeklyMenu}
+                  dataTestId='Home-button'
+                  ButtonStyles={ButtonStyles}
+               />
                <Profile
                   {...{ shouldDisplayCart, toggleDisplayCart, signOut }}
                />
