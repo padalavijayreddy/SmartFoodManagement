@@ -9,10 +9,12 @@ export const Button = ({
    onClick,
    dataTestId,
    ButtonStyles,
-   isLoading
+   isLoading,
+   state
 }) => {
    return (
       <LoginButton
+         state={state}
          disabled={disabled}
          onClick={onClick}
          data-testid={dataTestId}
@@ -26,7 +28,8 @@ export const Button = ({
 Button.defaultProps = {
    SignIntext: 'SUBMIT',
    disabled: false,
-   isLoading: false
+   isLoading: false,
+   state: false
 }
 
 export default Button

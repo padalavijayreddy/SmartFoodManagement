@@ -5,19 +5,19 @@ import WithHeaderComponent from '../../../CommonModule/hocs/withHeader'
 import { observable } from 'mobx'
 import { Home } from '../Home/Home'
 
-interface HomePageProps {
+interface WeeklyMenuProps {
    shouldDisplayCart: boolean
    toggleDisplayCart: () => void
    signOut: () => void
    tabBarStatus: string
-   onChangeWeeklyMenuRoutes: () => void
+   onChangeHomePageRoutes: () => void
 }
 
 @observer
-class FoodManagementHomePage extends Component<HomePageProps> {
+class FoodManagementWeeklyMenu extends Component<WeeklyMenuProps> {
    render() {
-      return <Home />
+      return <div>Vijay Reddy Padala</div>
    }
 }
 
-export default WithHeaderComponent(FoodManagementHomePage)
+export default WithHeaderComponent(FoodManagementWeeklyMenu)

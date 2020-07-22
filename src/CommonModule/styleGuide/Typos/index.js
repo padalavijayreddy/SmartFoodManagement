@@ -46,6 +46,16 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       letter-spacing: normal;
       color: ${colors.lightBlueGrey};
    `,
+   Typo20DarkBlueGreyHKGrotesk = styled.span`
+      font-family: HKGrotesk;
+      font-size: 20px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.2;
+      letter-spacing: normal;
+      color: ${colors.lightBlueGrey};
+   `,
    Typo20BlackHKGroteskMedium = styled.button`
       width: 143px;
       height: 24px;
@@ -76,7 +86,7 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       font-style: normal;
       line-height: 1.71;
       letter-spacing: normal;
-      color: var(--steel);
+      color: ${colors.darkBlueGrey};
    `,
    Typo12HKGroteskSemiBoldSteel = styled.label`
       width: 150px;
@@ -111,4 +121,14 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       line-height: 1.71;
       letter-spacing: normal;
       color: ${colors.lightBlueGrey};
+   `,
+   Typo32DarkBlueGreyHKGroteskMedium = styled.div`
+      font-family: HKGrotesk;
+      font-size: 32px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: normal;
+      color: ${colors.darkBlueGrey};
    `

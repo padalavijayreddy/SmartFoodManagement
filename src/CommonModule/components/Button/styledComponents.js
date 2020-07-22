@@ -9,4 +9,6 @@ export const StyledButton = styled.button`
 
 export const LoginButton = styled.button`
    ${props => props.ButtonStyles}
+   color: ${props => (props.state ? '#0099ff' : '#171f46')};
+
 `

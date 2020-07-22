@@ -1,0 +1,1 @@
+export { WeeklyMenuRoutes } from './WeeklyMenuRoutes'

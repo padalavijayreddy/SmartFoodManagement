@@ -1,0 +1,1 @@
+export { WeeklyFoodWastage } from './WeeklyFoodWastage'
