@@ -60,7 +60,9 @@ class Header extends React.Component {
             <img src={header.ibhubsLogoURL}></img>
             <HeaderNotify>
                <SwitchIn>
-                  <Incampus state={this.state.checked}>In Campus</Incampus>
+                  <Incampus state={this.state.checked}>
+                     {this.state.checked ? 'In Campus' : 'Off Campus'}
+                  </Incampus>
                   <label htmlFor='material-switch'>
                      <Switch
                         checked={this.state.checked}

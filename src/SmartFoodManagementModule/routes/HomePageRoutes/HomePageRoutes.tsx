@@ -27,6 +27,15 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       this.tabBarStatus = 'HOME'
    }
 
+   componentDidMount() {
+      this.doNetworkCalls()
+   }
+
+   doNetworkCalls = () => {
+      this.getSmartFoodManagementStore().getBannerDataList()
+      this.getSmartFoodManagementStore().getMenuItemsList()
+   }
+
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
 
    getAuthStore = () => {
@@ -61,8 +70,17 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
          toggleDisplayCart,
          onChangeWeeklyMenuRoutes,
          signOut,
-         tabBarStatus
+         tabBarStatus,
+         doNetworkCalls
       } = this
+      const {
+         bannerDataList,
+         getBannerDataAPIStatus,
+         getBannerDataAPIError,
+         menuItemsList,
+         getMenuItemsAPIStatus,
+         getMenuItemsAPIError
+      } = this.getSmartFoodManagementStore()
       return (
          <FoodManagementHomePage
             tabBarStatus={tabBarStatus}
@@ -70,6 +88,13 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
             shouldDisplayCart={shouldDisplayCart}
             signOut={signOut}
             onChangeWeeklyMenuRoutes={onChangeWeeklyMenuRoutes}
+            bannerDataList={bannerDataList}
+            getBannerDataAPIStatus={getBannerDataAPIStatus}
+            getBannerDataAPIError={getBannerDataAPIError}
+            doNetworkCalls={doNetworkCalls}
+            menuItemsList={menuItemsList}
+            getMenuItemsAPIStatus={getMenuItemsAPIStatus}
+            getMenuItemsAPIError={getMenuItemsAPIError}
          />
       )
    }

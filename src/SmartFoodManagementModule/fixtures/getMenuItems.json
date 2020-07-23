@@ -1,0 +1,42 @@
+[
+   {
+      "breakfast": [
+         {
+            "start_time": "7:00",
+            "end_time": "10:00",
+            "meal_preference": "Full Meal",
+            "items_list": ["Idly", "Chutney", "Sambar", "Masala Rice", "Upma"]
+         }
+      ],
+      "lunch": [
+         {
+            "start_time": "12:00",
+            "end_time": "15:00",
+            "meal_preference": "Full Meal",
+            "items_list": [
+               "White Rice",
+               "Mango daal",
+               "Cabbage fry",
+               "Cabbage Pickle",
+               "Sambar",
+               "Butter Milk"
+            ]
+         }
+      ],
+      "dinner": [
+         {
+            "start_time": "19:00",
+            "end_time": "22:00",
+            "meal_preference": "Full Meal",
+            "items_list": [
+               "White Rice",
+               "Mango daal",
+               "Cabbage fry",
+               "Cabbage Pickle",
+               "Sambar",
+               "Butter Milk"
+            ]
+         }
+      ]
+   }
+]

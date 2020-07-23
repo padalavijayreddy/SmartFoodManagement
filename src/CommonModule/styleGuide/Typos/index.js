@@ -13,6 +13,16 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       letter-spacing: normal;
       color: #171f46;
    `,
+   Typo32BlackHKGrotestRegular = styled.div`
+      font-family: HKGrotesk;
+      font-size: 32px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: normal;
+}
+   `,
    Typo12SteelHKGroteskSemiBold = styled.label`
       height: 16px;
       font-family: HKGrotesk;
