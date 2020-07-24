@@ -1,42 +1,48 @@
-[
-   {
-      "breakfast": [
-         {
-            "start_time": "7:00",
-            "end_time": "10:00",
-            "meal_preference": "Full Meal",
-            "items_list": ["Idly", "Chutney", "Sambar", "Masala Rice", "Upma"]
-         }
-      ],
-      "lunch": [
-         {
-            "start_time": "12:00",
-            "end_time": "15:00",
-            "meal_preference": "Full Meal",
-            "items_list": [
-               "White Rice",
-               "Mango daal",
-               "Cabbage fry",
-               "Cabbage Pickle",
-               "Sambar",
-               "Butter Milk"
-            ]
-         }
-      ],
-      "dinner": [
-         {
-            "start_time": "19:00",
-            "end_time": "22:00",
-            "meal_preference": "Full Meal",
-            "items_list": [
-               "White Rice",
-               "Mango daal",
-               "Cabbage fry",
-               "Cabbage Pickle",
-               "Sambar",
-               "Butter Milk"
-            ]
-         }
-      ]
-   }
-]
+{
+   "meal_info": [
+      {
+         "meal_id": "0",
+         "meal_type": "BREAKFAST",
+         "meal_preference": "HALF MEAL",
+         "start_time": "07:00",
+         "end_time": "10:00",
+         "dead_line": "5:00",
+         "meal_status": "I ATE",
+         "menu_items": ["Idly", "Masala Rice", "Chutney", "Upma", "Sambar"]
+      },
+      {
+         "meal_id": "1",
+         "meal_type": "LUNCH",
+         "meal_preference": "CUSTOM",
+         "start_time": "12:00",
+         "end_time": "15:00",
+         "dead_line": "10:00",
+         "meal_status": "I SKIPPED",
+         "menu_items": [
+            "White Rice",
+            "Cabbage Pickle",
+            "Mango daal",
+            "Cabbage fry",
+            "Sambar",
+            "Butter Milk"
+         ]
+      },
+      {
+         "meal_id": "2",
+         "meal_type": "DINNER",
+         "meal_preference": "FULL MEAL",
+         "start_time": "19:00",
+         "end_time": "22:00",
+         "dead_line": "17:00",
+         "meal_status": "I SKIPPED",
+         "menu_items": [
+            "White Rice",
+            "Cabbage Pickle",
+            "Mango daal",
+            "Cabbage fry",
+            "Sambar",
+            "Butter Milk"
+         ]
+      }
+   ]
+}

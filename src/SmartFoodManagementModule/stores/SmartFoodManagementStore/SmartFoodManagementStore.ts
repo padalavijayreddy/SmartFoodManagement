@@ -1,16 +1,15 @@
 import { observable, action } from 'mobx'
 import { API_INITIAL } from '@ib/api-constants'
 import { bindPromiseWithOnSuccess } from '@ib/mobx-promise'
-import { BannerDataResponse, MenuItemsResponse } from '../types'
+import { BannerDataType, MenuItemsType, dateType } from '../types'
 import BannerDataModel from '../models/BannerDataModel'
 import MenuItemsModel from '../models/MenuItemsModel'
-import MenuTypeModel from '../models/MenuTypeModel'
 
 class SmartFoodManagementStore {
    @observable bannerDataList!: Array<BannerDataModel>
    @observable getBannerDataAPIStatus: any
    @observable getBannerDataAPIError: any
-   @observable menuItemsList!: Array<MenuTypeModel>
+   @observable menuItemsList!: Array<MenuItemsModel>
    @observable getMenuItemsAPIStatus: any
    @observable getMenuItemsAPIError: any
    homePageAPI: any
@@ -58,17 +57,18 @@ class SmartFoodManagementStore {
    }
 
    @action.bound
-   setGetBannerDataAPIResponse(apiResponse: Array<BannerDataResponse> | null) {
+   setGetBannerDataAPIResponse(apiResponse: BannerDataType | null) {
+      const { announcements } = apiResponse as BannerDataType
       if (apiResponse) {
-         this.bannerDataList = apiResponse.map(eachImage => {
+         this.bannerDataList = announcements.map(eachImage => {
             return new BannerDataModel(eachImage)
          })
       }
    }
 
    @action.bound
-   getMenuItemsList() {
-      const MenuItemsListPromise = this.homePageAPI.MenuItemsAPI()
+   getMenuItemsList(date) {
+      const MenuItemsListPromise = this.homePageAPI.MenuItemsAPI(date)
       return bindPromiseWithOnSuccess(MenuItemsListPromise)
          .to(this.setGetMenuItemsAPIStatus, (response: any) => {
             this.setGetMenuItemsAPIResponse(response)
@@ -89,10 +89,11 @@ class SmartFoodManagementStore {
    }
 
    @action.bound
-   setGetMenuItemsAPIResponse(apiResponse: Array<MenuItemsResponse> | null) {
+   setGetMenuItemsAPIResponse(apiResponse: MenuItemsType | null) {
+      const { meal_info } = apiResponse as MenuItemsType
       if (apiResponse) {
-         this.menuItemsList = apiResponse.map(eachMenuType => {
-            return new MenuTypeModel(eachMenuType)
+         this.menuItemsList = meal_info.map(eachMenuType => {
+            return new MenuItemsModel(eachMenuType)
          })
       }
    }

@@ -20,6 +20,7 @@ interface InjectedProps extends HomePageRoutesProps {
 class HomePageRoutes extends React.Component<HomePageRoutesProps> {
    @observable shouldDisplayCart!: boolean
    @observable tabBarStatus!: string
+   @observable startDate: Date = new Date()
 
    constructor(props) {
       super(props)
@@ -33,7 +34,11 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
 
    doNetworkCalls = () => {
       this.getSmartFoodManagementStore().getBannerDataList()
-      this.getSmartFoodManagementStore().getMenuItemsList()
+      this.getSmartFoodManagementStore().getMenuItemsList(this.startDate)
+   }
+
+   menuNetworKcall = () => {
+      this.getSmartFoodManagementStore().getMenuItemsList(this.startDate)
    }
 
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
@@ -58,6 +63,11 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       history.push(WEEKLY_MENU_PATH)
    }
 
+   handleDateChange = (date: any) => {
+      this.startDate = date
+      this.menuNetworKcall()
+   }
+
    signOut = () => {
       this.getAuthStore().userSignOut()
       const { history } = this.props
@@ -71,7 +81,9 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
          onChangeWeeklyMenuRoutes,
          signOut,
          tabBarStatus,
-         doNetworkCalls
+         doNetworkCalls,
+         startDate,
+         handleDateChange
       } = this
       const {
          bannerDataList,
@@ -83,6 +95,8 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       } = this.getSmartFoodManagementStore()
       return (
          <FoodManagementHomePage
+            startDate={startDate}
+            handleDateChange={handleDateChange}
             tabBarStatus={tabBarStatus}
             toggleDisplayCart={toggleDisplayCart}
             shouldDisplayCart={shouldDisplayCart}

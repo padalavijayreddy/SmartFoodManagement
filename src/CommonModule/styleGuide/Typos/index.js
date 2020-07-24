@@ -21,7 +21,16 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       font-style: normal;
       line-height: 1.25;
       letter-spacing: normal;
-}
+   `,
+   Typo16DarkBlueGreyHKGroteskMedium = styled.div`
+      font-family: HKGrotesk;
+      font-size: 16px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: ${colors.darkBlueGrey};
    `,
    Typo12SteelHKGroteskSemiBold = styled.label`
       height: 16px;

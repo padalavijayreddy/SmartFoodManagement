@@ -16,4 +16,10 @@ export const colors = {
    lightBlueGrey: '#d7dfe9',
    turquoiseBlue: '#00b2ca',
    lightBlueGrey24: 'rgba(215, 223, 233, 0.24)',
-};
+   jade: '#1db05f',
+   yellowOrange: '#ffb800',
+   red: '#ff0b37',
+   ice: '#f3fff8',
+   offWhite: '#fff8e6',
+   redInside: 'rgba(255, 11, 55, 0.05)'
+}

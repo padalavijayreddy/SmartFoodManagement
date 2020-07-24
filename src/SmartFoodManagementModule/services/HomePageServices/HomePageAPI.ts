@@ -19,11 +19,11 @@ class HomePageServices {
       )
    }
 
-   MenuItemsAPI = () => {
+   MenuItemsAPI = date => {
       return networkCallWithApisauce(
          this.api,
          endpoints.menuItems,
-         {},
+         { date },
          apiMethods.post
       )
    }

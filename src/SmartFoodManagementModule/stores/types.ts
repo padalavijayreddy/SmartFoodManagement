@@ -1,3 +1,7 @@
+export interface BannerDataType {
+   announcements: Array<BannerDataResponse>
+}
+
 export interface BannerDataResponse {
    background_image: string
    image_matter: string
@@ -5,15 +9,21 @@ export interface BannerDataResponse {
    image_content_matter: string
 }
 
-export interface MenuItemsResponse {
-   breakfast: Array<MenuItemsTypes>
-   lunch: Array<MenuItemsTypes>
-   dinner: Array<MenuItemsTypes>
+export interface MenuItemsType {
+   meal_info: Array<MenuItemsResponse>
 }
 
-export interface MenuItemsTypes {
+export interface MenuItemsResponse {
+   meal_id: string
+   meal_type: string
+   meal_preference: string
    start_time: string
    end_time: string
-   meal_preference: string
-   items_list: Array<string>
+   dead_line: string
+   meal_status: string
+   menu_items: Array<string>
+}
+
+export interface dateType {
+   date: Date
 }

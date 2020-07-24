@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Header } from '../../../CommonModule/components/Header'
 import { observer } from 'mobx-react'
 import WithHeaderComponent from '../../../CommonModule/hocs/withHeader'
 import { observable } from 'mobx'
@@ -8,6 +7,8 @@ import BannerDataModel from '../../stores/models/BannerDataModel'
 import MenuItemsModel from '../../stores/models/MenuItemsModel'
 
 interface HomePageProps {
+   startDate: Date
+   handleDateChange: (date: any) => void
    shouldDisplayCart: boolean
    toggleDisplayCart: () => void
    signOut: () => void
@@ -26,6 +27,8 @@ interface HomePageProps {
 class FoodManagementHomePage extends Component<HomePageProps> {
    render() {
       const {
+         startDate,
+         handleDateChange,
          bannerDataList,
          getBannerDataAPIStatus,
          getBannerDataAPIError,
@@ -36,6 +39,8 @@ class FoodManagementHomePage extends Component<HomePageProps> {
       } = this.props
       return (
          <Home
+            startDate={startDate}
+            handleDateChange={handleDateChange}
             bannerDataList={bannerDataList}
             getBannerDataAPIStatus={getBannerDataAPIStatus}
             getBannerDataAPIError={getBannerDataAPIError}

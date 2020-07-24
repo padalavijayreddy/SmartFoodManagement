@@ -7,21 +7,20 @@ import { DatePickers } from './styleComponents'
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
+interface DateProps {
+   startDate: Date
+   handleDateChange: (date: any) => void
+}
+
 @observer
-class DatePicker extends React.Component {
-   @observable startDate = new Date()
-
-   handleChange = date => {
-      this.startDate = date
-   }
-
+class DatePicker extends React.Component<DateProps> {
    render() {
       return (
          <DatePickers>
             <ReactDatePicker
-               selected={this.startDate}
+               selected={this.props.startDate}
                dateFormat='dd/MM/yyyy'
-               onChange={this.handleChange}
+               onChange={this.props.handleDateChange}
                isClearable
                placeholderText='I have been cleared!'
                className='focus:outline-none'

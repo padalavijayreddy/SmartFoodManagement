@@ -26,8 +26,10 @@
       "dataTextid": "sign-out-button"
    },
 
-   "save": {
-      "saveButton": "Save"
+   "card": {
+      "breakfastImageURL": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/2a3afcdb-6b81-44d8-beba-9992afd72ed4.svg",
+      "lunchImageURL": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/eb488d1e-9626-4181-8208-5506c4e5a60a.svg",
+      "dinnerImageURL": "https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/b9788c8e-9f46-4016-9c46-5d60fe9e9106.svg"
    },
 
    "roughSolution": {

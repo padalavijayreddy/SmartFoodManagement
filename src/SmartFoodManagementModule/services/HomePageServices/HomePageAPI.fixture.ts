@@ -9,8 +9,8 @@ class HomePageFixtureServices {
       })
    }
 
-   MenuItemsAPI = () => {
-      console.log(getMenuItems)
+   MenuItemsAPI = date => {
+      console.log('date', date)
       return new Promise((resolve, reject) => {
          setTimeout(() => resolve(getMenuItems), 2000)
       })
