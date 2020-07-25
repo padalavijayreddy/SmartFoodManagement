@@ -14,6 +14,7 @@ interface HomePageProps {
    signOut: () => void
    tabBarStatus: string
    onChangeWeeklyMenuRoutes: () => void
+   onChangeEditPageRoutes: () => void
    bannerDataList: Array<BannerDataModel>
    getBannerDataAPIStatus: string
    getBannerDataAPIError: string
@@ -35,7 +36,8 @@ class FoodManagementHomePage extends Component<HomePageProps> {
          doNetworkCalls,
          menuItemsList,
          getMenuItemsAPIStatus,
-         getMenuItemsAPIError
+         getMenuItemsAPIError,
+         onChangeEditPageRoutes
       } = this.props
       return (
          <Home
@@ -48,6 +50,7 @@ class FoodManagementHomePage extends Component<HomePageProps> {
             menuItemsList={menuItemsList}
             getMenuItemsAPIStatus={getMenuItemsAPIStatus}
             getMenuItemsAPIError={getMenuItemsAPIError}
+            onChangeEditPageRoutes={onChangeEditPageRoutes}
          />
       )
    }

@@ -7,7 +7,10 @@ import './App.css'
 import i18n from './CommonModule/i18n'
 import { AuthRoutes } from './AuthenticationModule/Routes'
 import stores from './CommonModule/stores'
-import { SmartFoodManagementHomePageRoutes } from './SmartFoodManagementModule/routes'
+import {
+   SmartFoodManagementHomePageRoutes,
+   SmartFoodManagementEditPageRoutes
+} from './SmartFoodManagementModule/routes'
 
 @observer
 class App extends React.Component {
@@ -20,6 +23,7 @@ class App extends React.Component {
                      <Switch>
                         {AuthRoutes}
                         {SmartFoodManagementHomePageRoutes}
+                        {SmartFoodManagementEditPageRoutes}
                         <Route path='/'>
                            <HomePage />
                         </Route>

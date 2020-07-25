@@ -1,29 +1,25 @@
 import React from 'react'
 import { observable, action } from 'mobx'
 import { observer, inject } from 'mobx-react'
-import FoodManagementHomePage from '../../components/FoodManagementHomePage'
 import { AuthStore } from '../../../AuthenticationModule/stores/AuthStore'
 import { LOGIN_PATH } from '../../../AuthenticationModule/constants/NavigationConstants'
 import { RouteComponentProps } from 'react-router-dom'
 import { SmartFoodManagementStore } from '../../stores/SmartFoodManagementStore'
-import {
-   WEEKLY_MENU_PATH,
-   SMART_FOOD_MANAGEMENT_EDIT_PATH
-} from '../../constants/NavigationConstants'
+import { WEEKLY_MENU_PATH } from '../../constants/NavigationConstants'
+import EditPage from '../../components/EditPage'
 
-interface HomePageRoutesProps extends RouteComponentProps {}
+interface EditPageProps extends RouteComponentProps {}
 
-interface InjectedProps extends HomePageRoutesProps {
+interface InjectedProps extends EditPageProps {
    authStore: AuthStore
    smartFoodManagementStore: SmartFoodManagementStore
 }
 
 @inject('authStore', 'smartFoodManagementStore')
 @observer
-class HomePageRoutes extends React.Component<HomePageRoutesProps> {
+class EditPageRoutes extends React.Component<EditPageProps> {
    @observable shouldDisplayCart!: boolean
    @observable tabBarStatus!: string
-   @observable startDate: Date = new Date()
 
    constructor(props) {
       super(props)
@@ -37,11 +33,6 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
 
    doNetworkCalls = () => {
       this.getSmartFoodManagementStore().getBannerDataList()
-      this.getSmartFoodManagementStore().getMenuItemsList(this.startDate)
-   }
-
-   menuNetworKcall = () => {
-      this.getSmartFoodManagementStore().getMenuItemsList(this.startDate)
    }
 
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
@@ -66,16 +57,6 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       history.push(WEEKLY_MENU_PATH)
    }
 
-   onChangeEditPageRoutes = () => {
-      const { history } = this.props
-      history.push(SMART_FOOD_MANAGEMENT_EDIT_PATH)
-   }
-
-   handleDateChange = (date: any) => {
-      this.startDate = date
-      this.menuNetworKcall()
-   }
-
    signOut = () => {
       this.getAuthStore().userSignOut()
       const { history } = this.props
@@ -87,41 +68,29 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
          shouldDisplayCart,
          toggleDisplayCart,
          onChangeWeeklyMenuRoutes,
-         onChangeEditPageRoutes,
          signOut,
          tabBarStatus,
-         doNetworkCalls,
-         startDate,
-         handleDateChange
+         doNetworkCalls
       } = this
       const {
          bannerDataList,
          getBannerDataAPIStatus,
-         getBannerDataAPIError,
-         menuItemsList,
-         getMenuItemsAPIStatus,
-         getMenuItemsAPIError
+         getBannerDataAPIError
       } = this.getSmartFoodManagementStore()
       return (
-         <FoodManagementHomePage
-            startDate={startDate}
-            handleDateChange={handleDateChange}
+         <EditPage
             tabBarStatus={tabBarStatus}
             toggleDisplayCart={toggleDisplayCart}
             shouldDisplayCart={shouldDisplayCart}
             signOut={signOut}
             onChangeWeeklyMenuRoutes={onChangeWeeklyMenuRoutes}
-            onChangeEditPageRoutes={onChangeEditPageRoutes}
             bannerDataList={bannerDataList}
             getBannerDataAPIStatus={getBannerDataAPIStatus}
             getBannerDataAPIError={getBannerDataAPIError}
             doNetworkCalls={doNetworkCalls}
-            menuItemsList={menuItemsList}
-            getMenuItemsAPIStatus={getMenuItemsAPIStatus}
-            getMenuItemsAPIError={getMenuItemsAPIError}
          />
       )
    }
 }
 
-export { HomePageRoutes }
+export { EditPageRoutes }

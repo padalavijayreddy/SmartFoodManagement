@@ -3,30 +3,21 @@ import { LoginButton } from './styledComponents'
 import Loader from '../../common/Icons/Loader/SvgFile'
 import { ButtonStyles } from '../../../AuthenticationModule/components/LoginPage/LoginPageStyle'
 
-export const Button = ({
-   text,
-   disabled,
-   onClick,
-   dataTestId,
-   ButtonStyles,
-   isLoading,
-   state
-}) => {
+export const Button = props => {
+   const { text, onClick, isLoading, ...otherProps } = props
+   const isClickable = onClick ? true : false
+   let passOnProps = isClickable
+      ? { ...otherProps, onClick, isClickable }
+      : otherProps
    return (
-      <LoginButton
-         state={state}
-         disabled={disabled}
-         onClick={onClick}
-         data-testid={dataTestId}
-         ButtonStyles={ButtonStyles}
-      >
+      <LoginButton {...passOnProps}>
          {isLoading ? <Loader fill='white' height={25} width={25} /> : text}
       </LoginButton>
    )
 }
 
 Button.defaultProps = {
-   SignIntext: 'SUBMIT',
+   text: 'SUBMIT',
    disabled: false,
    isLoading: false,
    state: false

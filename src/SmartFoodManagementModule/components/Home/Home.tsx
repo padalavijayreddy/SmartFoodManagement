@@ -30,6 +30,8 @@ import MenuItemsModel from '../../stores/models/MenuItemsModel'
 import NoDataView from '../../../CommonModule/common/NoDataView'
 import { observer } from 'mobx-react'
 import Button from '../../../CommonModule/components/Button/Button'
+import { ButtonTimeLeft } from '../ButtonTimeLeft'
+import { format } from 'date-fns'
 
 const MealTypeList = [
    'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/2a3afcdb-6b81-44d8-beba-9992afd72ed4.svg',
@@ -47,17 +49,23 @@ interface HomeProps {
    menuItemsList: Array<MenuItemsModel>
    getMenuItemsAPIStatus: string
    getMenuItemsAPIError: string
+   onChangeEditPageRoutes: () => void
 }
 
 class Home extends Component<HomeProps> {
    renderMenuItemList = observer(() => {
-      const { menuItemsList } = this.props
+      const { menuItemsList, onChangeEditPageRoutes } = this.props
       if (menuItemsList.length === 0) {
          return <NoDataView />
       } else {
          return (
             <React.Fragment>
                {menuItemsList.map((eachMeal, index) => {
+                  const StartTime = format(
+                     new Date(eachMeal.startTime),
+                     'hh:mm'
+                  )
+                  const EndTime = format(new Date(eachMeal.endTime), 'hh:mm')
                   return (
                      <SubCardDiv>
                         <Div1>
@@ -66,8 +74,8 @@ class Home extends Component<HomeProps> {
                               <Div1TypeTime>
                                  <Div1Type>{eachMeal.mealType}</Div1Type>
                                  <Div1Time>
-                                    {eachMeal.startTime}&nbsp; <span> - </span>
-                                    &nbsp; <span>{eachMeal.endTime}</span>
+                                    {StartTime} &nbsp; <span> - </span>
+                                    &nbsp; <span>{EndTime}</span>
                                  </Div1Time>
                               </Div1TypeTime>
                            </Div1Side1>
@@ -92,11 +100,11 @@ class Home extends Component<HomeProps> {
                            </Div2Slide2>
                         </Div2>
                         <Div3>
-                           <Button
-                              text='Edit'
-                              onClick={this.onEdit}
-                              dataTestId='Edit-button'
-                              {...{ ButtonStyles }}
+                           <ButtonTimeLeft
+                              startTime={eachMeal.startTime}
+                              endTime={eachMeal.endTime}
+                              deadlineTime={eachMeal.deadLine}
+                              onChangeEditPageRoutes={onChangeEditPageRoutes}
                            />
                         </Div3>
                      </SubCardDiv>
