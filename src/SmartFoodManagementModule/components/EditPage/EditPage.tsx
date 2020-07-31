@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import WithHeaderComponent from '../../../CommonModule/hocs/withHeader'
 import BannerDataModel from '../../stores/models/BannerDataModel'
 import { BannerAnimation } from '../../../CommonModule/components/BannerAnimation'
-import { ShowModel } from '../ShowModel'
+import { Card } from '../Card'
+import { Editdiv } from './styleComponents'
 
 interface EditPageProps {
    shouldDisplayCart: boolean
@@ -32,7 +33,9 @@ class EditPage extends Component<EditPageProps> {
                getBannerDataAPIError={getBannerDataAPIError}
                doNetworkCalls={doNetworkCalls}
             />
-            <ShowModel />
+            <Editdiv>
+               <Card />
+            </Editdiv>
          </div>
       )
    }

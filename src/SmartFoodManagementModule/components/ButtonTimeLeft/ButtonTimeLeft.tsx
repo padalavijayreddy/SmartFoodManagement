@@ -24,7 +24,7 @@ interface ButtonTimeProps {
 class ButtonTimeLeft extends Component<ButtonTimeProps> {
    timer!: number
    @observable timeLeft: string = 'Time'
-   @observable isWithInTime: boolean = true
+   @observable isWithInTime!: boolean
    @observable isTimeBetweenTheMealTimings!: boolean
    @observable isReviewButtonTime!: boolean
 
@@ -39,6 +39,7 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
             this.timeLeft = formatDistance(new Date(deadlineTime), new Date(), {
                includeSeconds: true
             })
+            this.isWithInTime = true
          } else if (compareAsc(new Date(startTime), new Date()) === 1) {
             this.isWithInTime = false
             this.timeLeft = 'Edit closed'
@@ -49,7 +50,10 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
             this.timeLeft = 'I Ate it'
             this.isWithInTime = false
             this.isTimeBetweenTheMealTimings = true
-         } else {
+         } else if (
+            compareAsc(new Date(), new Date(startTime)) === 1 &&
+            compareAsc(new Date(), new Date(endTime)) === 1
+         ) {
             this.isReviewButtonTime = true
             this.isTimeBetweenTheMealTimings = false
          }

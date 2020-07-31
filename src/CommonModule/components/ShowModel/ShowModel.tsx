@@ -2,7 +2,15 @@ import React from 'react'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
 
 const ShowModel = () => (
-   <Modal style={{ height: 400, margin: 1000 }} open={true} size='large'>
+   <Modal
+      style={{ margin: 150, height: 600, width: 500 }}
+      dimmerSettings={{
+         closable: false,
+         useCSS: false
+      }}
+      open={true}
+      size='small'
+   >
       <Modal.Content image>
          <Modal.Description>
             <Header>BREAKFAST</Header>
