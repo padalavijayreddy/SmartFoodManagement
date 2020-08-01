@@ -14,7 +14,7 @@ interface HomePageProps {
    signOut: () => void
    tabBarStatus: string
    onChangeWeeklyMenuRoutes: () => void
-   onChangeEditPageRoutes: () => void
+   onChangeEditPageRoutes: (Id: number) => void
    bannerDataList: Array<BannerDataModel>
    getBannerDataAPIStatus: string
    getBannerDataAPIError: string

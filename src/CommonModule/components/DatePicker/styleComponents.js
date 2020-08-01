@@ -6,6 +6,6 @@ export const DatePickers = styled.div`
    align-self: center;
    border: 1px solid lightblue;
    padding: 15px;
-   width: 12%;
+   width: 141px;
    box-shadow: 5px 5px 5px grey;
 `

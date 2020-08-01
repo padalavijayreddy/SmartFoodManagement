@@ -6,6 +6,8 @@ import { Card } from '../Card'
 import { Editdiv } from './styleComponents'
 
 interface EditPageProps {
+   startDate: Date
+   handleDateChange: (date: any) => void
    shouldDisplayCart: boolean
    toggleDisplayCart: () => void
    signOut: () => void
@@ -20,6 +22,8 @@ interface EditPageProps {
 class EditPage extends Component<EditPageProps> {
    render() {
       const {
+         startDate,
+         handleDateChange,
          bannerDataList,
          getBannerDataAPIStatus,
          getBannerDataAPIError,
@@ -34,7 +38,10 @@ class EditPage extends Component<EditPageProps> {
                doNetworkCalls={doNetworkCalls}
             />
             <Editdiv>
-               <Card />
+               <Card
+                  startDate={startDate}
+                  handleDateChange={handleDateChange}
+               />
             </Editdiv>
          </div>
       )

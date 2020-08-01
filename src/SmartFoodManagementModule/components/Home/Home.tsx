@@ -49,7 +49,7 @@ interface HomeProps {
    menuItemsList: Array<MenuItemsModel>
    getMenuItemsAPIStatus: string
    getMenuItemsAPIError: string
-   onChangeEditPageRoutes: () => void
+   onChangeEditPageRoutes: (Id: number) => void
 }
 
 class Home extends Component<HomeProps> {
@@ -105,6 +105,7 @@ class Home extends Component<HomeProps> {
                               endTime={eachMeal.endTime}
                               deadlineTime={eachMeal.deadLine}
                               onChangeEditPageRoutes={onChangeEditPageRoutes}
+                              mealID={eachMeal.mealId}
                            />
                         </Div3>
                      </SubCardDiv>

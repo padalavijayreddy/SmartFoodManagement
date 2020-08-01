@@ -154,9 +154,22 @@ export const Buttons = styled.button`
    width: 100px;
    height: 24px;
    &:hover {
-      width:105px;
-      height:30px;
-      transition: all $transition;
+      background-color: ${props =>
+         props.className == 'FULL MEAL'
+            ? '#1db05f'
+            : props.className == 'CUSTOM'
+            ? '#ffb800'
+            : props.className == 'HALF MEAL'
+            ? '#1db05f'
+            : '#ff0b37'};
+      color: ${props =>
+         props.className == 'FULL MEAL'
+            ? '#f3fff8'
+            : props.className == 'CUSTOM'
+            ? '#fff8e6'
+            : props.className == 'HALF MEAL'
+            ? '#f3fff8'
+            : 'rgba(255, 11, 55, 0.05)'};
 `
 
 export const Div1Type = styled(Typo16DarkBlueGreyHKGroteskMedium)``

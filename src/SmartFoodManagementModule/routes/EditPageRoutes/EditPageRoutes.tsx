@@ -20,6 +20,7 @@ interface InjectedProps extends EditPageProps {
 class EditPageRoutes extends React.Component<EditPageProps> {
    @observable shouldDisplayCart!: boolean
    @observable tabBarStatus!: string
+   @observable startDate: Date = new Date()
 
    constructor(props) {
       super(props)
@@ -29,6 +30,10 @@ class EditPageRoutes extends React.Component<EditPageProps> {
 
    componentDidMount() {
       this.doNetworkCalls()
+   }
+
+   handleDateChange = (date: any) => {
+      this.startDate = date
    }
 
    doNetworkCalls = () => {
@@ -70,7 +75,9 @@ class EditPageRoutes extends React.Component<EditPageProps> {
          onChangeWeeklyMenuRoutes,
          signOut,
          tabBarStatus,
-         doNetworkCalls
+         doNetworkCalls,
+         startDate,
+         handleDateChange
       } = this
       const {
          bannerDataList,
@@ -79,6 +86,8 @@ class EditPageRoutes extends React.Component<EditPageProps> {
       } = this.getSmartFoodManagementStore()
       return (
          <EditPage
+            startDate={startDate}
+            handleDateChange={handleDateChange}
             tabBarStatus={tabBarStatus}
             toggleDisplayCart={toggleDisplayCart}
             shouldDisplayCart={shouldDisplayCart}

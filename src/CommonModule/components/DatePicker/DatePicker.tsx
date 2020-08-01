@@ -22,8 +22,8 @@ class DatePicker extends React.Component<DateProps> {
                dateFormat='dd/MM/yyyy'
                onChange={this.props.handleDateChange}
                isClearable
-               placeholderText='I have been cleared!'
-               className='focus:outline-none'
+               placeholderText='Cleared!'
+               className='w-full self-center text-lg focus:outline-none'
             />
          </DatePickers>
       )

@@ -14,6 +14,18 @@ export const ButtonStyles = css`
    color: 'white';
 `
 
+export const ReviewButtonStyles = css`
+   ${tw` flex justify-center text-center text-white rounded focus:outline-none hover:bg-green-900 hover:text-white focus:shadow-outline`}
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   background: #1db05f;
+   cursor: 'pointer';
+   padding: 8px 16px;
+   width: 270px;
+   font-size: 14px;
+   height: 35px;
+   color: 'white';
+`
+
 export const DisabledButtonStyles = css`
    ${tw` flex justify-center text-center text-white rounded focus:outline-none hover:text-white focus:shadow-outline`}
    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

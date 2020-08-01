@@ -2,7 +2,7 @@ import { observable, action } from 'mobx'
 import { MenuItemsResponse } from '../../types'
 
 class MenuItemsModel {
-   mealId!: string
+   mealId!: number
    mealType!: string
    mealPreference!: string
    startTime!: string

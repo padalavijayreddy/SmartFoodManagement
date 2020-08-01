@@ -66,9 +66,9 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       history.push(WEEKLY_MENU_PATH)
    }
 
-   onChangeEditPageRoutes = () => {
+   onChangeEditPageRoutes = (mealID: number) => {
       const { history } = this.props
-      history.push(SMART_FOOD_MANAGEMENT_EDIT_PATH)
+      history.push(`${SMART_FOOD_MANAGEMENT_EDIT_PATH}${mealID}/`)
    }
 
    handleDateChange = (date: any) => {

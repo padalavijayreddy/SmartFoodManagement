@@ -1,0 +1,33 @@
+{
+   "meal_id": "string",
+   "meal_type": "BREAKFAST",
+   "user_meal_preference": "FULL MEAL",
+   "full_meal": {
+      "item_id": "string",
+      "item_name": "string",
+      "item_cateogary": "string",
+      "serving_base_unit": "CUP",
+      "quantity": "string"
+   },
+   "half_meal": {
+      "item_id": "string",
+      "item_name": "string",
+      "item_cateogary": "string",
+      "serving_base_unit": "CUP",
+      "quantity": "string"
+   },
+   "custom_meal": {
+      "item_id": "string",
+      "item_name": "string",
+      "item_cateogary": "string",
+      "serving_base_unit": "CUP",
+      "quantity": "string"
+   },
+   "skipped": {
+      "item_id": "string",
+      "item_name": "string",
+      "item_cateogary": "string",
+      "serving_base_unit": "CUP",
+      "quantity": "string"
+   }
+}

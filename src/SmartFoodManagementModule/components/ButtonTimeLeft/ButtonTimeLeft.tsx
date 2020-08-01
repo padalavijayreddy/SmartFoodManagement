@@ -10,14 +10,16 @@ import {
    DisabledButtonStyles,
    MealTime,
    IAteButtonStyles,
-   ISkippedButtonStyles
+   ISkippedButtonStyles,
+   ReviewButtonStyles
 } from './styleComponents'
 
 interface ButtonTimeProps {
    startTime: string
    endTime: string
    deadlineTime: string
-   onChangeEditPageRoutes: () => void
+   onChangeEditPageRoutes: (Id: number) => void
+   mealID: number
 }
 
 @observer
@@ -30,6 +32,11 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
 
    componentDidMount() {
       this.renderTimeLeft()
+   }
+
+   OnChangeEditDetails = () => {
+      const { onChangeEditPageRoutes, mealID } = this.props
+      onChangeEditPageRoutes(mealID)
    }
 
    renderTimeLeft = () => {
@@ -71,13 +78,13 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
          isTimeBetweenTheMealTimings,
          isReviewButtonTime
       } = this
-      const { onChangeEditPageRoutes } = this.props
+
       if (isWithInTime) {
          return (
             <Button
                text={`Edit ${timeLeft} left`}
                dataTestId='timeLeft-button'
-               onClick={onChangeEditPageRoutes}
+               onClick={this.OnChangeEditDetails}
                {...{ ButtonStyles }}
             />
          )
@@ -117,7 +124,7 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
                text='Review'
                dataTestId='Review-button'
                onClick={this.reviewButton}
-               {...{ ButtonStyles }}
+               ButtonStyles={ReviewButtonStyles}
             />
          )
       }

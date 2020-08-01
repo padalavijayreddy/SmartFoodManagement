@@ -14,7 +14,7 @@ export interface MenuItemsType {
 }
 
 export interface MenuItemsResponse {
-   meal_id: string
+   meal_id: number
    meal_type: string
    meal_preference: string
    start_time: string
