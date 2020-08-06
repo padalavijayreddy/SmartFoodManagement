@@ -2,32 +2,124 @@
    "meal_id": "string",
    "meal_type": "BREAKFAST",
    "user_meal_preference": "FULL MEAL",
-   "full_meal": {
-      "item_id": "string",
-      "item_name": "string",
-      "item_cateogary": "string",
-      "serving_base_unit": "CUP",
-      "quantity": "string"
-   },
-   "half_meal": {
-      "item_id": "string",
-      "item_name": "string",
-      "item_cateogary": "string",
-      "serving_base_unit": "CUP",
-      "quantity": "string"
-   },
-   "custom_meal": {
-      "item_id": "string",
-      "item_name": "string",
-      "item_cateogary": "string",
-      "serving_base_unit": "CUP",
-      "quantity": "string"
-   },
-   "skipped": {
-      "item_id": "string",
-      "item_name": "string",
-      "item_cateogary": "string",
-      "serving_base_unit": "CUP",
-      "quantity": "string"
-   }
+   "full_meal": [
+      {
+         "item_id": "1",
+         "item_name": "Poori",
+         "item_cateogary": "Indian Bread",
+         "serving_base_unit": "Pieces",
+         "quantity": "3"
+      },
+      {
+         "item_id": "2",
+         "item_name": "Aloo Curry",
+         "item_cateogary": "Curry",
+         "serving_base_unit": "Cups",
+         "quantity": "2"
+      },
+      {
+         "item_id": "3",
+         "item_name": "Fried Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "3"
+      },
+      {
+         "item_id": "4",
+         "item_name": "Masala Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "3"
+      }
+   ],
+   "half_meal": [
+      {
+         "item_id": "1",
+         "item_name": "Poori",
+         "item_cateogary": "Indian Bread",
+         "serving_base_unit": "Pieces",
+         "quantity": "2"
+      },
+      {
+         "item_id": "2",
+         "item_name": "Aloo Curry",
+         "item_cateogary": "Curry",
+         "serving_base_unit": "Cups",
+         "quantity": "1"
+      },
+      {
+         "item_id": "3",
+         "item_name": "Fried Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "2"
+      },
+      {
+         "item_id": "4",
+         "item_name": "Masala Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "1"
+      }
+   ],
+   "custom_meal": [
+      {
+         "item_id": "1",
+         "item_name": "Poori",
+         "item_cateogary": "Indian Bread",
+         "serving_base_unit": "Pieces",
+         "quantity": "3"
+      },
+      {
+         "item_id": "2",
+         "item_name": "Aloo Curry",
+         "item_cateogary": "Curry",
+         "serving_base_unit": "Cups",
+         "quantity": "2"
+      },
+      {
+         "item_id": "3",
+         "item_name": "Fried Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "3"
+      },
+      {
+         "item_id": "4",
+         "item_name": "Masala Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "3"
+      }
+   ],
+   "skipped": [
+      {
+         "item_id": "1",
+         "item_name": "Poori",
+         "item_cateogary": "Indian Bread",
+         "serving_base_unit": "Pieces",
+         "quantity": "0"
+      },
+      {
+         "item_id": "2",
+         "item_name": "Aloo Curry",
+         "item_cateogary": "Curry",
+         "serving_base_unit": "Cups",
+         "quantity": "0"
+      },
+      {
+         "item_id": "3",
+         "item_name": "Fried Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "0"
+      },
+      {
+         "item_id": "4",
+         "item_name": "Masala Rice",
+         "item_cateogary": "Rice",
+         "serving_base_unit": "Laddle",
+         "quantity": "0"
+      }
+   ]
 }

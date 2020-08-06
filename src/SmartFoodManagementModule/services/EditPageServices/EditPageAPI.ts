@@ -4,29 +4,19 @@ import Config from '../../../CommonModule/constants/EnvironmentConstants'
 import { apiMethods } from '../../../CommonModule/constants/APIConstants'
 import { endpoints } from '../endpoints'
 
-class HomePageServices {
+class EditPageServices {
    api
    constructor() {
       this.api = create({ baseURL: Config.BASE_URL })
    }
-
-   BannerDataAPI = () => {
+   EditPreferencesAPI = mealType => {
       return networkCallWithApisauce(
          this.api,
-         endpoints.bannerData,
-         {},
-         apiMethods.get
-      )
-   }
-
-   MenuItemsAPI = date => {
-      return networkCallWithApisauce(
-         this.api,
-         endpoints.menuItems,
-         { date },
+         endpoints.editPreferences,
+         { mealType },
          apiMethods.get
       )
    }
 }
 
-export { HomePageServices }
+export { EditPageServices }

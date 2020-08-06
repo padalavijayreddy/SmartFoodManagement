@@ -15,10 +15,13 @@ import {
 } from './styleComponents'
 
 interface ButtonTimeProps {
+   mealStatus: string
+   onChangeMealType: (value: string) => void
+   mealType: string
    startTime: string
    endTime: string
    deadlineTime: string
-   onChangeEditPageRoutes: (Id: number) => void
+   onChangeEditPageRoutes: (status: string) => void
    mealID: number
 }
 
@@ -35,8 +38,14 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
    }
 
    OnChangeEditDetails = () => {
-      const { onChangeEditPageRoutes, mealID } = this.props
-      onChangeEditPageRoutes(mealID)
+      const {
+         onChangeEditPageRoutes,
+         mealStatus,
+         onChangeMealType,
+         mealType
+      } = this.props
+      onChangeMealType(mealType)
+      onChangeEditPageRoutes(mealStatus)
    }
 
    renderTimeLeft = () => {

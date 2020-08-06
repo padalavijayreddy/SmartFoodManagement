@@ -10,6 +10,7 @@ import {
    WEEKLY_MENU_PATH,
    SMART_FOOD_MANAGEMENT_EDIT_PATH
 } from '../../constants/NavigationConstants'
+import { format } from 'date-fns'
 
 interface HomePageRoutesProps extends RouteComponentProps {}
 
@@ -24,11 +25,13 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
    @observable shouldDisplayCart!: boolean
    @observable tabBarStatus!: string
    @observable startDate: Date = new Date()
+   @observable mealType!: string
 
    constructor(props) {
       super(props)
       this.shouldDisplayCart = false
       this.tabBarStatus = 'HOME'
+      this.mealType = ''
    }
 
    componentDidMount() {
@@ -60,15 +63,26 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       }
    }
 
+   onChangeMealType = (value: string) => {
+      console.log('this.mealType', this.mealType)
+      this.mealType = value
+   }
+
    onChangeWeeklyMenuRoutes = () => {
       this.tabBarStatus = 'Weekly Menu'
       const { history } = this.props
       history.push(WEEKLY_MENU_PATH)
    }
 
-   onChangeEditPageRoutes = (mealID: number) => {
+   onChangeEditPageRoutes = (mealStatus: string) => {
       const { history } = this.props
-      history.push(`${SMART_FOOD_MANAGEMENT_EDIT_PATH}${mealID}/`)
+      const DateString = format(this.startDate, 'MM/dd/yyyy')
+      // console.log('mealStatus', mealStatus)
+      history.push({
+         pathname: `/Smart-Food-Management/edit/${this.mealType}`,
+         search: `?Date=${DateString}`
+         // state: mealStatus
+      })
    }
 
    handleDateChange = (date: any) => {
@@ -92,7 +106,9 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
          tabBarStatus,
          doNetworkCalls,
          startDate,
-         handleDateChange
+         handleDateChange,
+         mealType,
+         onChangeMealType
       } = this
       const {
          bannerDataList,
@@ -104,6 +120,8 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       } = this.getSmartFoodManagementStore()
       return (
          <FoodManagementHomePage
+            mealType={mealType}
+            onChangeMealType={onChangeMealType}
             startDate={startDate}
             handleDateChange={handleDateChange}
             tabBarStatus={tabBarStatus}

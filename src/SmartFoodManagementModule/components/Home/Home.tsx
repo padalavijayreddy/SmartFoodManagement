@@ -40,6 +40,8 @@ const MealTypeList = [
 ]
 
 interface HomeProps {
+   mealType: string
+   onChangeMealType: (value: string) => void
    startDate: Date
    handleDateChange: (date: any) => void
    bannerDataList: Array<BannerDataModel>
@@ -49,12 +51,17 @@ interface HomeProps {
    menuItemsList: Array<MenuItemsModel>
    getMenuItemsAPIStatus: string
    getMenuItemsAPIError: string
-   onChangeEditPageRoutes: (Id: number) => void
+   onChangeEditPageRoutes: (status: string) => void
 }
 
 class Home extends Component<HomeProps> {
    renderMenuItemList = observer(() => {
-      const { menuItemsList, onChangeEditPageRoutes } = this.props
+      const {
+         menuItemsList,
+         onChangeEditPageRoutes,
+         mealType,
+         onChangeMealType
+      } = this.props
       if (menuItemsList.length === 0) {
          return <NoDataView />
       } else {
@@ -101,6 +108,9 @@ class Home extends Component<HomeProps> {
                         </Div2>
                         <Div3>
                            <ButtonTimeLeft
+                              mealStatus={eachMeal.mealStatus}
+                              onChangeMealType={onChangeMealType}
+                              mealType={eachMeal.mealType}
                               startTime={eachMeal.startTime}
                               endTime={eachMeal.endTime}
                               deadlineTime={eachMeal.deadLine}

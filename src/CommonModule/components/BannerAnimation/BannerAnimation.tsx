@@ -79,7 +79,6 @@ class BannerAnimation extends React.Component<BannerProps> {
          getBannerDataAPIError,
          doNetworkCalls
       } = this.props
-      console.log('BannerComponent', bannerDataList)
       return (
          <LoadingWrapperWithFailure
             apiStatus={getBannerDataAPIStatus}

@@ -27,3 +27,20 @@ export interface MenuItemsResponse {
 export interface dateType {
    date: Date
 }
+
+export interface editPreferencesListType {
+   meal_id: string
+   meal_type: string
+   user_meal_preference: string
+   full_meal: Array<mealDataListType>
+   half_meal: Array<mealDataListType>
+   custom_meal: Array<mealDataListType>
+}
+
+export interface mealDataListType {
+   item_id: string
+   item_name: string
+   item_cateogary: string
+   serving_base_unit: string
+   quantity: string
+}

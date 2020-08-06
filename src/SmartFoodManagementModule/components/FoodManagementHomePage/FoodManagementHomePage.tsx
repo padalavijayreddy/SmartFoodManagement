@@ -7,6 +7,8 @@ import BannerDataModel from '../../stores/models/BannerDataModel'
 import MenuItemsModel from '../../stores/models/MenuItemsModel'
 
 interface HomePageProps {
+   mealType: string
+   onChangeMealType: (value: string) => void
    startDate: Date
    handleDateChange: (date: any) => void
    shouldDisplayCart: boolean
@@ -14,7 +16,7 @@ interface HomePageProps {
    signOut: () => void
    tabBarStatus: string
    onChangeWeeklyMenuRoutes: () => void
-   onChangeEditPageRoutes: (Id: number) => void
+   onChangeEditPageRoutes: (status: string) => void
    bannerDataList: Array<BannerDataModel>
    getBannerDataAPIStatus: string
    getBannerDataAPIError: string
@@ -28,6 +30,8 @@ interface HomePageProps {
 class FoodManagementHomePage extends Component<HomePageProps> {
    render() {
       const {
+         mealType,
+         onChangeMealType,
          startDate,
          handleDateChange,
          bannerDataList,
@@ -41,6 +45,8 @@ class FoodManagementHomePage extends Component<HomePageProps> {
       } = this.props
       return (
          <Home
+            mealType={mealType}
+            onChangeMealType={onChangeMealType}
             startDate={startDate}
             handleDateChange={handleDateChange}
             bannerDataList={bannerDataList}
