@@ -16,7 +16,7 @@ export const IntialDiv = styled.div`
    ${tw`flex w-full justify-between m-10 items-center`}
 `
 
-export const BreakFastDiv = styled(Typo32DarkBlueGreyHKGroteskMedium)`
+export const MealTypeDiv = styled(Typo32DarkBlueGreyHKGroteskMedium)`
     ${tw``}
     border-bottom:1px solid ${colors.brightBlue};
     padding-bottom:10px;

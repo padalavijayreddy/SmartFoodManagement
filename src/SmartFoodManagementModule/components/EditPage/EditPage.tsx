@@ -4,8 +4,13 @@ import BannerDataModel from '../../stores/models/BannerDataModel'
 import { BannerAnimation } from '../../../CommonModule/components/BannerAnimation'
 import { Card } from '../Card'
 import { Editdiv } from './styleComponents'
+import EditPreferencesDataModel from '../../stores/models/EditPreferencesDataModel'
+import { observer } from 'mobx-react'
 
 interface EditPageProps {
+   getEditPreferencesAPIError: string
+   getEditPreferencesAPIStatus: number
+   editPreferencesList: EditPreferencesDataModel
    startDate: Date
    handleDateChange: (date: any) => void
    shouldDisplayCart: boolean
@@ -19,6 +24,7 @@ interface EditPageProps {
    doNetworkCalls: () => void
 }
 
+@observer
 class EditPage extends Component<EditPageProps> {
    render() {
       const {
@@ -27,7 +33,10 @@ class EditPage extends Component<EditPageProps> {
          bannerDataList,
          getBannerDataAPIStatus,
          getBannerDataAPIError,
-         doNetworkCalls
+         doNetworkCalls,
+         editPreferencesList,
+         getEditPreferencesAPIError,
+         getEditPreferencesAPIStatus
       } = this.props
       return (
          <div>
@@ -39,8 +48,12 @@ class EditPage extends Component<EditPageProps> {
             />
             <Editdiv>
                <Card
+                  doNetworkCalls={doNetworkCalls}
                   startDate={startDate}
                   handleDateChange={handleDateChange}
+                  editPreferencesList={editPreferencesList}
+                  getEditPreferencesAPIError={getEditPreferencesAPIError}
+                  getEditPreferencesAPIStatus={getEditPreferencesAPIStatus}
                />
             </Editdiv>
          </div>

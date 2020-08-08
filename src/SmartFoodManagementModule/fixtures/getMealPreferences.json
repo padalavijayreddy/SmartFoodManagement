@@ -1,6 +1,6 @@
 {
    "meal_id": "string",
-   "meal_type": "BREAKFAST",
+   "meal_type": "DINNER",
    "user_meal_preference": "FULL MEAL",
    "full_meal": [
       {

@@ -53,7 +53,8 @@ class SmartFoodManagementEditStore {
 
    @action.bound
    setGetEditPreferencesAPIResponse(apiResponse: editPreferencesListType) {
-      console.log('apiResponse', apiResponse)
+      this.editPreferencesList = new EditPreferencesDataModel(apiResponse)
+      console.log('Edit Preference List', this.editPreferencesList)
    }
 }
 

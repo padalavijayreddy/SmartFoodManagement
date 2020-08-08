@@ -96,8 +96,16 @@ class EditPageRoutes extends React.Component<EditPageProps> {
          getBannerDataAPIStatus,
          getBannerDataAPIError
       } = this.getSmartFoodManagementStore()
+      const {
+         editPreferencesList,
+         getEditPreferencesAPIStatus,
+         getEditPreferencesAPIError
+      } = this.getSmartFoodManagementEditStore()
       return (
          <EditPage
+            getEditPreferencesAPIError={getEditPreferencesAPIError}
+            getEditPreferencesAPIStatus={getEditPreferencesAPIStatus}
+            editPreferencesList={editPreferencesList}
             startDate={startDate}
             handleDateChange={handleDateChange}
             tabBarStatus={tabBarStatus}

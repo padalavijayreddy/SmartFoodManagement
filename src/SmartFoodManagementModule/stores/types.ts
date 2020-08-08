@@ -35,6 +35,7 @@ export interface editPreferencesListType {
    full_meal: Array<mealDataListType>
    half_meal: Array<mealDataListType>
    custom_meal: Array<mealDataListType>
+   skipped: Array<mealDataListType>
 }
 
 export interface mealDataListType {
