@@ -17,6 +17,7 @@ interface EditPageProps {
    toggleDisplayCart: () => void
    signOut: () => void
    tabBarStatus: string
+   goBackHome: () => void
    onChangeWeeklyMenuRoutes: () => void
    bannerDataList: Array<BannerDataModel>
    getBannerDataAPIStatus: string
@@ -28,6 +29,7 @@ interface EditPageProps {
 class EditPage extends Component<EditPageProps> {
    render() {
       const {
+         goBackHome,
          startDate,
          handleDateChange,
          bannerDataList,
@@ -48,6 +50,7 @@ class EditPage extends Component<EditPageProps> {
             />
             <Editdiv>
                <Card
+                  goBackHome={goBackHome}
                   doNetworkCalls={doNetworkCalls}
                   startDate={startDate}
                   handleDateChange={handleDateChange}

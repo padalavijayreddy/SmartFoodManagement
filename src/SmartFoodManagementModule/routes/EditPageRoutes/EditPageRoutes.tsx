@@ -6,7 +6,10 @@ import { LOGIN_PATH } from '../../../AuthenticationModule/constants/NavigationCo
 import { RouteComponentProps } from 'react-router-dom'
 import { SmartFoodManagementStore } from '../../stores/SmartFoodManagementStore'
 import { SmartFoodManagementEditStore } from '../../stores/SmartFoodManagementEditStore'
-import { WEEKLY_MENU_PATH } from '../../constants/NavigationConstants'
+import {
+   WEEKLY_MENU_PATH,
+   SMART_FOOD_MANAGEMENT_HOME_PATH
+} from '../../constants/NavigationConstants'
 import EditPage from '../../components/EditPage'
 
 interface EditPageProps extends RouteComponentProps {}
@@ -31,7 +34,6 @@ class EditPageRoutes extends React.Component<EditPageProps> {
       const queryString = require('query-string')
       const parsed = this.props.location.search.slice(6)
       this.startDate = new Date(parsed)
-      // console.log('state', this.props.location)
    }
 
    componentDidMount() {
@@ -74,6 +76,11 @@ class EditPageRoutes extends React.Component<EditPageProps> {
       history.push(WEEKLY_MENU_PATH)
    }
 
+   goBackHome = () => {
+      const { history } = this.props
+      history.push(SMART_FOOD_MANAGEMENT_HOME_PATH)
+   }
+
    signOut = () => {
       this.getAuthStore().userSignOut()
       const { history } = this.props
@@ -89,7 +96,8 @@ class EditPageRoutes extends React.Component<EditPageProps> {
          tabBarStatus,
          doNetworkCalls,
          startDate,
-         handleDateChange
+         handleDateChange,
+         goBackHome
       } = this
       const {
          bannerDataList,
@@ -103,6 +111,7 @@ class EditPageRoutes extends React.Component<EditPageProps> {
       } = this.getSmartFoodManagementEditStore()
       return (
          <EditPage
+            goBackHome={goBackHome}
             getEditPreferencesAPIError={getEditPreferencesAPIError}
             getEditPreferencesAPIStatus={getEditPreferencesAPIStatus}
             editPreferencesList={editPreferencesList}

@@ -6,7 +6,7 @@ class EditEachMealPreferenceDataModel {
    @observable itemName: string
    @observable itemCateogary!: string
    @observable servingBaseUnit!: string
-   @observable quantity!: string
+   @observable quantity!: number
 
    constructor(data: mealDataListType) {
       this.itemId = data.item_id

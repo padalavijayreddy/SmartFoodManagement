@@ -7,9 +7,17 @@ import {
    SecondDiv,
    TabBarDiv,
    MealStatusStyles,
+   QuantityStatusStyles,
    DateDiv,
    ButtonsDiv,
-   SaveButtonStyles
+   SaveButtonStyles,
+   MealDiv,
+   ButtonDiv,
+   MainButtonDiv,
+   ItemDiv,
+   Categoryspan,
+   CountStyles,
+   Unitspan
 } from './styleComponents'
 import Button from '../../../CommonModule/components/Button/Button'
 import { DatePicker } from '../../../CommonModule/components/DatePicker'
@@ -26,15 +34,16 @@ interface CardProps {
    editPreferencesList: EditPreferencesDataModel
    startDate: Date
    handleDateChange: (date: any) => void
+   goBackHome: () => void
 }
 
 @observer
 class Card extends Component<CardProps> {
    @observable activeMealType!: string
+   @observable cursorPoint!: boolean
 
    constructor(props) {
       super(props)
-      this.activeMealType = this.props.editPreferencesList.userMealPreferences
    }
 
    skipMeal = () => {
@@ -53,10 +62,74 @@ class Card extends Component<CardProps> {
       alert('CustomMeal')
    }
 
-   renderFoodItems = () => {
-      if (this.activeMealType === 'FULL MEAL') {
+   renderFoodItems = observer(() => {
+      this.activeMealType = this.props.editPreferencesList.userMealPreferences
+      console.log('hello', this.props.editPreferencesList.fullMeal)
+      if (this.activeMealType == 'FULL MEAL') {
+         return (
+            <div>
+               {this.props.editPreferencesList.fullMeal.map(EachItem => {
+                  const quantity = EachItem.quantity
+                  return (
+                     <div className='flex justify-center align-center border-2 border-red-200'>
+                        <MealDiv>
+                           <div>
+                              <b>{EachItem.itemName}</b>
+                           </div>
+                           <span>{EachItem.itemCateogary}</span>
+                        </MealDiv>
+                     </div>
+                  )
+               })}
+            </div>
+         )
+      } else if (this.activeMealType == 'CUSTOM') {
+         return (
+            <div className='w-1/2'>
+               {this.props.editPreferencesList.fullMeal.map(EachItem => {
+                  const quantity = EachItem.quantity
+                  return (
+                     <MainButtonDiv>
+                        <MealDiv>
+                           <ItemDiv>{EachItem.itemName}</ItemDiv>
+                           <Categoryspan className='text-sm'>
+                              {EachItem.itemCateogary}
+                           </Categoryspan>
+                        </MealDiv>
+                        <ButtonDiv>
+                           <Button
+                              text='-'
+                              dataTestId='decreasing-button'
+                              onClick={() =>
+                                 (EachItem.quantity = EachItem.quantity - 1)
+                              }
+                              ButtonStyles={CountStyles}
+                           />
+                           <QuantityStatusStyles>
+                              {EachItem.quantity}
+                           </QuantityStatusStyles>
+                           <Button
+                              text='+'
+                              dataTestId='adding-button'
+                              onClick={() =>
+                                 (EachItem.quantity =
+                                    EachItem.quantity == 10
+                                       ? 1
+                                       : EachItem.quantity + 1)
+                              }
+                              ButtonStyles={CountStyles}
+                           />
+                        </ButtonDiv>
+                        <Unitspan>{EachItem.servingBaseUnit}</Unitspan>
+                     </MainButtonDiv>
+                  )
+               })}
+            </div>
+         )
+      } else {
+         return <NoDataView />
       }
-   }
+   })
 
    renderEditEachMealPreferenceList = observer(() => {
       const {
@@ -125,7 +198,7 @@ class Card extends Component<CardProps> {
                      <Button
                         text='Back'
                         dataTestId='Back-button'
-                        onClick={this.skipMeal}
+                        onClick={this.props.goBackHome}
                         ButtonStyles={SkipButton}
                      />
                      <Button

@@ -43,5 +43,5 @@ export interface mealDataListType {
    item_name: string
    item_cateogary: string
    serving_base_unit: string
-   quantity: string
+   quantity: number
 }

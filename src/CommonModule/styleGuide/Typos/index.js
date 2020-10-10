@@ -13,6 +13,16 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       letter-spacing: normal;
       color: #171f46;
    `,
+   Typo12CoolGreyHKGroteskRegular = styled.span`
+      font-family: HKGrotesk;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      color: #b5b7c4;
+   `,
    Typo32BlackHKGrotestRegular = styled.div`
       font-family: HKGrotesk;
       font-size: 32px;
@@ -95,7 +105,7 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       font-style: normal;
       line-height: 1.71;
       letter-spacing: normal;
-      color: var(--black);
+      color: black;
    `,
    Typo14SteelHKGroteskRegular = styled.span`
       font-family: HKGrotesk;
@@ -150,4 +160,14 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       line-height: 1.25;
       letter-spacing: normal;
       color: ${colors.darkBlueGrey};
+   `,
+   Typo18SteelHKGroteskMedium = styled.div`
+      font-family: HKGrotesk;
+      font-size: 18px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      color: #7e858e;
    `
