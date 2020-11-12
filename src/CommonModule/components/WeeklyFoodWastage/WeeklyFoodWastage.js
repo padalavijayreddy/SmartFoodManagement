@@ -148,7 +148,7 @@ const panes = [
 
 const TabExamplePointing = () => (
    <Tab
-      menu={{ style: { width: 288 }, pointing: true, color: 'blue' }}
+      menu={{ style: { width: 305 }, pointing: true, color: 'blue' }}
       panes={panes}
    />
 )

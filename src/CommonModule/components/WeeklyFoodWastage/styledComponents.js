@@ -10,6 +10,7 @@ export const MainDiv = styled.div`
    padding-left: 150px;
    padding-right: 150px;
    width: 100%;
+   margin-top: 75px;
 `
 export const SubDiv = styled(Typo32DarkBlueGreyHKGroteskMedium)`
    width: 300px;

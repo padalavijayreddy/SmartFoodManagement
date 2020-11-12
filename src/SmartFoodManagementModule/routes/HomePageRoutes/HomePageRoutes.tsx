@@ -8,7 +8,8 @@ import { RouteComponentProps } from 'react-router-dom'
 import { SmartFoodManagementStore } from '../../stores/SmartFoodManagementStore'
 import {
    WEEKLY_MENU_PATH,
-   SMART_FOOD_MANAGEMENT_EDIT_PATH
+   SMART_FOOD_MANAGEMENT_EDIT_PATH,
+   SMART_FOOD_MANAGEMENT_REVIEW_PATH
 } from '../../constants/NavigationConstants'
 import { format } from 'date-fns'
 
@@ -23,6 +24,7 @@ interface InjectedProps extends HomePageRoutesProps {
 @observer
 class HomePageRoutes extends React.Component<HomePageRoutesProps> {
    @observable shouldDisplayCart!: boolean
+   @observable shouldDisplayModal!: boolean
    @observable tabBarStatus!: string
    @observable startDate: Date = new Date()
    @observable mealType!: string
@@ -30,6 +32,7 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
    constructor(props) {
       super(props)
       this.shouldDisplayCart = false
+      this.shouldDisplayModal = false
       this.tabBarStatus = 'HOME'
       this.mealType = ''
    }
@@ -63,6 +66,16 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       }
    }
 
+   toggleDisplayCartFalse = () => {
+      this.shouldDisplayCart = false
+   }
+
+   toggleModal = () => {
+      {
+         this.shouldDisplayModal = this.shouldDisplayModal ? false : true
+      }
+   }
+
    onChangeMealType = (value: string) => {
       console.log('this.mealType', this.mealType)
       this.mealType = value
@@ -77,17 +90,40 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
    onChangeEditPageRoutes = (mealStatus: string) => {
       const { history } = this.props
       const DateString = format(this.startDate, 'MM/dd/yyyy')
-      // console.log('mealStatus', mealStatus)
       history.push({
          pathname: `/Smart-Food-Management/edit/${this.mealType}`,
          search: `?Date=${DateString}`
-         // state: mealStatus
+      })
+   }
+
+   onChangeReviewPageRoutes = () => {
+      const { history } = this.props
+      const DateString = format(this.startDate, 'MM/dd/yyyy')
+      history.push({
+         pathname: `/Smart-Food-Management/review/${this.mealType}`,
+         search: `?Date=${DateString}`
       })
    }
 
    handleDateChange = (date: any) => {
       this.startDate = date
       this.menuNetworKcall()
+   }
+
+   getPreviousDate = () => {
+      const currentDayInMilli = new Date(this.startDate).getTime()
+      const oneDay = 1000 * 60 * 60 * 24
+      const previousDayInMilli = currentDayInMilli - oneDay
+      const previousDate = new Date(previousDayInMilli)
+      this.handleDateChange(previousDate)
+   }
+
+   getNextDate = () => {
+      const currentDayInMilli = new Date(this.startDate).getTime()
+      const oneDay = 1000 * 60 * 60 * 24
+      const nextDayInMilli = currentDayInMilli + oneDay
+      const nextDate = new Date(nextDayInMilli)
+      this.handleDateChange(nextDate)
    }
 
    signOut = () => {
@@ -99,14 +135,20 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
    render() {
       const {
          shouldDisplayCart,
+         shouldDisplayModal,
+         toggleModal,
          toggleDisplayCart,
+         toggleDisplayCartFalse,
          onChangeWeeklyMenuRoutes,
          onChangeEditPageRoutes,
+         onChangeReviewPageRoutes,
          signOut,
          tabBarStatus,
          doNetworkCalls,
          startDate,
          handleDateChange,
+         getPreviousDate,
+         getNextDate,
          mealType,
          onChangeMealType
       } = this
@@ -120,16 +162,22 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       } = this.getSmartFoodManagementStore()
       return (
          <FoodManagementHomePage
+            toggleDisplayCartFalse={toggleDisplayCartFalse}
             mealType={mealType}
             onChangeMealType={onChangeMealType}
             startDate={startDate}
             handleDateChange={handleDateChange}
+            getPreviousDate={getPreviousDate}
+            getNextDate={getNextDate}
             tabBarStatus={tabBarStatus}
             toggleDisplayCart={toggleDisplayCart}
             shouldDisplayCart={shouldDisplayCart}
+            toggleModal={toggleModal}
+            shouldDisplayModal={shouldDisplayModal}
             signOut={signOut}
             onChangeWeeklyMenuRoutes={onChangeWeeklyMenuRoutes}
             onChangeEditPageRoutes={onChangeEditPageRoutes}
+            onChangeReviewPageRoutes={onChangeReviewPageRoutes}
             bannerDataList={bannerDataList}
             getBannerDataAPIStatus={getBannerDataAPIStatus}
             getBannerDataAPIError={getBannerDataAPIError}

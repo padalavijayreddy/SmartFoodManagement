@@ -32,6 +32,7 @@ import { observer } from 'mobx-react'
 import Button from '../../../CommonModule/components/Button/Button'
 import { ButtonTimeLeft } from '../ButtonTimeLeft'
 import { format } from 'date-fns'
+import { GetHelp } from '../GetHelp'
 
 const MealTypeList = [
    'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/2a3afcdb-6b81-44d8-beba-9992afd72ed4.svg',
@@ -44,6 +45,8 @@ interface HomeProps {
    onChangeMealType: (value: string) => void
    startDate: Date
    handleDateChange: (date: any) => void
+   getPreviousDate: () => void
+   getNextDate: () => void
    bannerDataList: Array<BannerDataModel>
    getBannerDataAPIStatus: string
    getBannerDataAPIError: string
@@ -52,6 +55,8 @@ interface HomeProps {
    getMenuItemsAPIStatus: string
    getMenuItemsAPIError: string
    onChangeEditPageRoutes: (status: string) => void
+   onChangeReviewPageRoutes: () => void
+   toggleDisplayCartFalse: () => void
 }
 
 class Home extends Component<HomeProps> {
@@ -59,7 +64,10 @@ class Home extends Component<HomeProps> {
       const {
          menuItemsList,
          onChangeEditPageRoutes,
+         onChangeReviewPageRoutes,
          mealType,
+         getPreviousDate,
+         getNextDate,
          onChangeMealType
       } = this.props
       if (menuItemsList.length === 0) {
@@ -82,7 +90,7 @@ class Home extends Component<HomeProps> {
                                  <Div1Type>{eachMeal.mealType}</Div1Type>
                                  <Div1Time>
                                     {StartTime} &nbsp; <span> - </span>
-                                    &nbsp; <span>{EndTime}</span>
+                                    &nbsp;<span>{EndTime}</span>
                                  </Div1Time>
                               </Div1TypeTime>
                            </Div1Side1>
@@ -115,6 +123,9 @@ class Home extends Component<HomeProps> {
                               endTime={eachMeal.endTime}
                               deadlineTime={eachMeal.deadLine}
                               onChangeEditPageRoutes={onChangeEditPageRoutes}
+                              onChangeReviewPageRoutes={
+                                 onChangeReviewPageRoutes
+                              }
                               mealID={eachMeal.mealId}
                            />
                         </Div3>
@@ -134,17 +145,20 @@ class Home extends Component<HomeProps> {
       const {
          startDate,
          handleDateChange,
+         getPreviousDate,
+         getNextDate,
          bannerDataList,
          getBannerDataAPIStatus,
          getBannerDataAPIError,
          doNetworkCalls,
          menuItemsList,
          getMenuItemsAPIStatus,
-         getMenuItemsAPIError
+         getMenuItemsAPIError,
+         toggleDisplayCartFalse
       } = this.props
 
       return (
-         <HomeMainDiv>
+         <HomeMainDiv onClick={toggleDisplayCartFalse}>
             <HomeBannerDiv>
                <BannerAnimation
                   bannerDataList={bannerDataList}
@@ -158,6 +172,8 @@ class Home extends Component<HomeProps> {
             </HomeWeeklyStats>
             <HomeDate>
                <DatePicker
+                  getNextDate={getNextDate}
+                  getPreviousDate={getPreviousDate}
                   startDate={startDate}
                   handleDateChange={handleDateChange}
                />
@@ -170,6 +186,7 @@ class Home extends Component<HomeProps> {
                   renderSuccessUI={this.renderMenuItemList}
                />
             </CardDiv>
+            <GetHelp />
          </HomeMainDiv>
       )
    }

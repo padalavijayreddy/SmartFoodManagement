@@ -7,16 +7,22 @@ import BannerDataModel from '../../stores/models/BannerDataModel'
 import MenuItemsModel from '../../stores/models/MenuItemsModel'
 
 interface HomePageProps {
+   toggleDisplayCartFalse: () => void
    mealType: string
    onChangeMealType: (value: string) => void
    startDate: Date
+   getPreviousDate: () => void
+   getNextDate: () => void
    handleDateChange: (date: any) => void
    shouldDisplayCart: boolean
+   shouldDisplayModal: boolean
    toggleDisplayCart: () => void
+   toggleModal: () => void
    signOut: () => void
    tabBarStatus: string
    onChangeWeeklyMenuRoutes: () => void
    onChangeEditPageRoutes: (status: string) => void
+   onChangeReviewPageRoutes: () => void
    bannerDataList: Array<BannerDataModel>
    getBannerDataAPIStatus: string
    getBannerDataAPIError: string
@@ -34,6 +40,8 @@ class FoodManagementHomePage extends Component<HomePageProps> {
          onChangeMealType,
          startDate,
          handleDateChange,
+         getPreviousDate,
+         getNextDate,
          bannerDataList,
          getBannerDataAPIStatus,
          getBannerDataAPIError,
@@ -41,14 +49,19 @@ class FoodManagementHomePage extends Component<HomePageProps> {
          menuItemsList,
          getMenuItemsAPIStatus,
          getMenuItemsAPIError,
-         onChangeEditPageRoutes
+         onChangeEditPageRoutes,
+         onChangeReviewPageRoutes,
+         toggleDisplayCartFalse
       } = this.props
       return (
          <Home
+            toggleDisplayCartFalse={toggleDisplayCartFalse}
             mealType={mealType}
             onChangeMealType={onChangeMealType}
             startDate={startDate}
             handleDateChange={handleDateChange}
+            getPreviousDate={getPreviousDate}
+            getNextDate={getNextDate}
             bannerDataList={bannerDataList}
             getBannerDataAPIStatus={getBannerDataAPIStatus}
             getBannerDataAPIError={getBannerDataAPIError}
@@ -57,6 +70,7 @@ class FoodManagementHomePage extends Component<HomePageProps> {
             getMenuItemsAPIStatus={getMenuItemsAPIStatus}
             getMenuItemsAPIError={getMenuItemsAPIError}
             onChangeEditPageRoutes={onChangeEditPageRoutes}
+            onChangeReviewPageRoutes={onChangeReviewPageRoutes}
          />
       )
    }

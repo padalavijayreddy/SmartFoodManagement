@@ -9,7 +9,9 @@ import { AuthRoutes } from './AuthenticationModule/Routes'
 import stores from './CommonModule/stores'
 import {
    SmartFoodManagementHomePageRoutes,
-   SmartFoodManagementEditPageRoutes
+   SmartFoodManagementEditPageRoutes,
+   SmartFoodManagementReviewPageRoutes,
+   SmartFoodManagementAdminPageRoutes
 } from './SmartFoodManagementModule/routes'
 
 @observer
@@ -24,6 +26,8 @@ class App extends React.Component {
                         {AuthRoutes}
                         {SmartFoodManagementHomePageRoutes}
                         {SmartFoodManagementEditPageRoutes}
+                        {SmartFoodManagementReviewPageRoutes}
+                        {SmartFoodManagementAdminPageRoutes}
                         <Route path='/'>
                            <HomePage />
                         </Route>

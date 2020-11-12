@@ -17,7 +17,17 @@ import {
    ItemDiv,
    Categoryspan,
    CountStyles,
-   Unitspan
+   Unitspan,
+   Buttons,
+   Buttons1,
+   Buttons2,
+   QuantityStyles,
+   QuantityDiv,
+   UnitsSpan,
+   MainFullDiv,
+   Buttons3,
+   SelectPreference,
+   FullDiv
 } from './styleComponents'
 import Button from '../../../CommonModule/components/Button/Button'
 import { DatePicker } from '../../../CommonModule/components/DatePicker'
@@ -26,6 +36,7 @@ import LoadingWrapperWithFailure from '../../../CommonModule/common/LoadingWrapp
 import NoDataView from '../../../CommonModule/common/NoDataView'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
+import { FcServices } from 'react-icons/fc'
 
 interface CardProps {
    doNetworkCalls: () => void
@@ -34,6 +45,8 @@ interface CardProps {
    editPreferencesList: EditPreferencesDataModel
    startDate: Date
    handleDateChange: (date: any) => void
+   getPreviousDate: () => void
+   getNextDate: () => void
    goBackHome: () => void
 }
 
@@ -42,43 +55,51 @@ class Card extends Component<CardProps> {
    @observable activeMealType!: string
    @observable cursorPoint!: boolean
 
-   constructor(props) {
-      super(props)
+   componentDidMount() {
+      if (this.props.editPreferencesList) {
+         this.activeMealType = this.props.editPreferencesList.userMealPreferences
+      }
    }
 
    skipMeal = () => {
-      alert('Skipped Meal')
+      if (this.activeMealType == 'SKIP MEAL') {
+         this.activeMealType = 'CUSTOM'
+      } else {
+         this.activeMealType = 'SKIP MEAL'
+      }
    }
 
    fullMealPreferences = () => {
-      alert('fullMeal')
+      this.activeMealType = 'FULL MEAL'
    }
 
    halfMealPreferences = () => {
-      alert('Half Meal')
+      this.activeMealType = 'HALF MEAL'
    }
 
    customMealPreferences = () => {
-      alert('CustomMeal')
+      this.activeMealType = 'CUSTOM'
    }
 
    renderFoodItems = observer(() => {
-      this.activeMealType = this.props.editPreferencesList.userMealPreferences
-      console.log('hello', this.props.editPreferencesList.fullMeal)
       if (this.activeMealType == 'FULL MEAL') {
          return (
             <div>
                {this.props.editPreferencesList.fullMeal.map(EachItem => {
                   const quantity = EachItem.quantity
                   return (
-                     <div className='flex justify-center align-center border-2 border-red-200'>
+                     <MainFullDiv>
                         <MealDiv>
-                           <div>
-                              <b>{EachItem.itemName}</b>
-                           </div>
-                           <span>{EachItem.itemCateogary}</span>
+                           <ItemDiv>{EachItem.itemName}</ItemDiv>
+                           <Categoryspan className='text-sm'>
+                              {EachItem.itemCateogary}
+                           </Categoryspan>
                         </MealDiv>
-                     </div>
+                        <QuantityDiv>
+                           <QuantityStyles>{EachItem.quantity}</QuantityStyles>
+                           <UnitsSpan>{EachItem.servingBaseUnit}</UnitsSpan>
+                        </QuantityDiv>
+                     </MainFullDiv>
                   )
                })}
             </div>
@@ -86,7 +107,7 @@ class Card extends Component<CardProps> {
       } else if (this.activeMealType == 'CUSTOM') {
          return (
             <div className='w-1/2'>
-               {this.props.editPreferencesList.fullMeal.map(EachItem => {
+               {this.props.editPreferencesList.customMeal.map(EachItem => {
                   const quantity = EachItem.quantity
                   return (
                      <MainButtonDiv>
@@ -101,7 +122,10 @@ class Card extends Component<CardProps> {
                               text='-'
                               dataTestId='decreasing-button'
                               onClick={() =>
-                                 (EachItem.quantity = EachItem.quantity - 1)
+                                 (EachItem.quantity =
+                                    EachItem.quantity == 0
+                                       ? 0
+                                       : EachItem.quantity - 1)
                               }
                               ButtonStyles={CountStyles}
                            />
@@ -114,7 +138,7 @@ class Card extends Component<CardProps> {
                               onClick={() =>
                                  (EachItem.quantity =
                                     EachItem.quantity == 10
-                                       ? 1
+                                       ? 10
                                        : EachItem.quantity + 1)
                               }
                               ButtonStyles={CountStyles}
@@ -126,8 +150,60 @@ class Card extends Component<CardProps> {
                })}
             </div>
          )
+      } else if (this.activeMealType == 'HALF MEAL') {
+         return (
+            <div>
+               {this.props.editPreferencesList.halfMeal.map(EachItem => {
+                  const quantity = EachItem.quantity
+                  return (
+                     <MainFullDiv>
+                        <MealDiv>
+                           <ItemDiv>{EachItem.itemName}</ItemDiv>
+                           <Categoryspan className='text-sm'>
+                              {EachItem.itemCateogary}
+                           </Categoryspan>
+                        </MealDiv>
+                        <QuantityDiv>
+                           <QuantityStyles>{EachItem.quantity}</QuantityStyles>
+                           <UnitsSpan>{EachItem.servingBaseUnit}</UnitsSpan>
+                        </QuantityDiv>
+                     </MainFullDiv>
+                  )
+               })}
+            </div>
+         )
+      } else if (this.activeMealType == 'SKIP MEAL') {
+         return (
+            <div>
+               {this.props.editPreferencesList.skipped.map(EachItem => {
+                  const quantity = EachItem.quantity
+                  return (
+                     <MainFullDiv>
+                        <MealDiv>
+                           <ItemDiv>{EachItem.itemName}</ItemDiv>
+                           <Categoryspan className='text-sm'>
+                              {EachItem.itemCateogary}
+                           </Categoryspan>
+                        </MealDiv>
+                        <QuantityDiv>
+                           <QuantityStyles>{EachItem.quantity}</QuantityStyles>
+                           <UnitsSpan>{EachItem.servingBaseUnit}</UnitsSpan>
+                        </QuantityDiv>
+                     </MainFullDiv>
+                  )
+               })}
+            </div>
+         )
       } else {
-         return <NoDataView />
+         return (
+            <FullDiv>
+               <SelectPreference>
+                  <FcServices />
+                  &nbsp; SELECT YOUR MEAL PREFERENCES &nbsp;
+                  <FcServices />
+               </SelectPreference>
+            </FullDiv>
+         )
       }
    })
 
@@ -136,6 +212,8 @@ class Card extends Component<CardProps> {
          editPreferencesList,
          startDate,
          handleDateChange,
+         getPreviousDate,
+         getNextDate,
          getEditPreferencesAPIError,
          getEditPreferencesAPIStatus,
          doNetworkCalls
@@ -148,36 +226,38 @@ class Card extends Component<CardProps> {
                <CardDiv>
                   <IntialDiv>
                      <MealTypeDiv>{editPreferencesList.mealType}</MealTypeDiv>
-                     <Button
-                        text='Skip Meal'
-                        dataTestId='SkipMeal-button'
+                     <Buttons3
+                        className={this.activeMealType}
                         onClick={this.skipMeal}
-                        ButtonStyles={SkipButton}
-                     />
+                     >
+                        Skip Meal
+                     </Buttons3>
                   </IntialDiv>
                   <SecondDiv>
                      <TabBarDiv>
-                        <Button
-                           text='Full Meal'
-                           dataTestId='FullMeal-button'
+                        <Buttons
+                           className={this.activeMealType}
                            onClick={this.fullMealPreferences}
-                           ButtonStyles={MealStatusStyles}
-                        />
-                        <Button
-                           text='Half Meal'
-                           dataTestId='HalfMeal-button'
-                           onClick={this.skipMeal}
-                           ButtonStyles={MealStatusStyles}
-                        />
-                        <Button
-                           text='Custom'
-                           dataTestId='Custom-button'
-                           onClick={this.skipMeal}
-                           ButtonStyles={MealStatusStyles}
-                        />
+                        >
+                           Full Meal
+                        </Buttons>
+                        <Buttons1
+                           className={this.activeMealType}
+                           onClick={this.halfMealPreferences}
+                        >
+                           Half Meal
+                        </Buttons1>
+                        <Buttons2
+                           className={this.activeMealType}
+                           onClick={this.customMealPreferences}
+                        >
+                           Custom
+                        </Buttons2>
                      </TabBarDiv>
                      <DateDiv>
                         <DatePicker
+                           getNextDate={getNextDate}
+                           getPreviousDate={getPreviousDate}
                            startDate={startDate}
                            handleDateChange={handleDateChange}
                         />

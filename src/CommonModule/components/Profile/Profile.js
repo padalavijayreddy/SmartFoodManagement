@@ -13,12 +13,16 @@ import {
    UserOptions,
    Option,
    AccountCenter,
-   BorderButton
+   BorderButton,
+   NotificationIcon,
+   NotifyNum
 } from './ProfileStyle'
 import { header } from '../../i18nStrings/strings.json'
 import { FiSettings, FiThumbsUp, FiFacebook } from 'react-icons/fi'
 import { AiOutlineShareAlt, AiOutlineContacts } from 'react-icons/ai'
 import { GoSignOut } from 'react-icons/go'
+import { FcAdvance } from 'react-icons/fc'
+import { GoBell } from 'react-icons/go'
 
 @observer
 class Profile extends React.Component {
@@ -28,14 +32,14 @@ class Profile extends React.Component {
    }
 
    render() {
-      const { shouldDisplayCart, signOut } = this.props
+      const { shouldDisplayCart, signOut, toggleModal } = this.props
       return (
          <ProfileDiv {...{ shouldDisplayCart }}>
             <DeleteButton
                data-testid='cart-close-button'
                onClick={this.hideCart}
             >
-               X
+               <FcAdvance />
             </DeleteButton>
             <ProfileMainDiv>
                <AccountCenterDiv>
@@ -44,6 +48,10 @@ class Profile extends React.Component {
                      <AccountCenterP>Account Center</AccountCenterP>
                      <EmailId>@vijayReddyPadala</EmailId>
                   </AccountCenter>
+                  <NotificationIcon onClick={toggleModal}>
+                     <GoBell size={24} />
+                     <NotifyNum>1</NotifyNum>
+                  </NotificationIcon>
                </AccountCenterDiv>
                <UserOptions>
                   <Option>
@@ -61,12 +69,12 @@ class Profile extends React.Component {
                   <Option>
                      Do Share <AiOutlineShareAlt />
                   </Option>
-                  <SignoutButton onClick={signOut}>
-                     <GoSignOut />
-                     Sign Out
-                  </SignoutButton>
                </UserOptions>
-               <BorderButton></BorderButton>
+               <BorderButton>
+                  <SignoutButton onClick={signOut}>
+                     SIGN OUT <GoSignOut />
+                  </SignoutButton>
+               </BorderButton>
             </ProfileMainDiv>
          </ProfileDiv>
       )

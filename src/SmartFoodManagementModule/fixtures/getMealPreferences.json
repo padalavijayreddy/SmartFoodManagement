@@ -1,6 +1,6 @@
 {
    "meal_id": "string",
-   "meal_type": "DINNER",
+   "meal_type": "BREAKFAST",
    "user_meal_preference": "CUSTOM",
    "full_meal": [
       {
@@ -68,7 +68,7 @@
          "item_name": "Poori",
          "item_cateogary": "Indian Bread",
          "serving_base_unit": "Pieces",
-         "quantity": "3"
+         "quantity": 3
       },
       {
          "item_id": "2",

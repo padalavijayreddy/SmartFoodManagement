@@ -44,10 +44,28 @@ class EditPageRoutes extends React.Component<EditPageProps> {
       this.startDate = date
    }
 
-   doNetworkCalls = () => {
+   getPreviousDate = () => {
+      const currentDayInMilli = new Date(this.startDate).getTime()
+      const oneDay = 1000 * 60 * 60 * 24
+      const previousDayInMilli = currentDayInMilli - oneDay
+      const previousDate = new Date(previousDayInMilli)
+      this.handleDateChange(previousDate)
+   }
+
+   getNextDate = () => {
+      const currentDayInMilli = new Date(this.startDate).getTime()
+      const oneDay = 1000 * 60 * 60 * 24
+      const nextDayInMilli = currentDayInMilli + oneDay
+      const nextDate = new Date(nextDayInMilli)
+      this.handleDateChange(nextDate)
+   }
+
+   doNetworkCalls = async () => {
       const mealType = this.props.match.params['mealType']
-      this.getSmartFoodManagementStore().getBannerDataList()
-      this.getSmartFoodManagementEditStore().getEditPreferencesList(mealType)
+      await this.getSmartFoodManagementStore().getBannerDataList()
+      await this.getSmartFoodManagementEditStore().getEditPreferencesList(
+         mealType
+      )
    }
 
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
@@ -68,6 +86,10 @@ class EditPageRoutes extends React.Component<EditPageProps> {
       {
          this.shouldDisplayCart = this.shouldDisplayCart ? false : true
       }
+   }
+
+   toggleDisplayCartFalse = () => {
+      this.shouldDisplayCart = false
    }
 
    onChangeWeeklyMenuRoutes = () => {
@@ -97,7 +119,10 @@ class EditPageRoutes extends React.Component<EditPageProps> {
          doNetworkCalls,
          startDate,
          handleDateChange,
-         goBackHome
+         getPreviousDate,
+         getNextDate,
+         goBackHome,
+         toggleDisplayCartFalse
       } = this
       const {
          bannerDataList,
@@ -111,12 +136,15 @@ class EditPageRoutes extends React.Component<EditPageProps> {
       } = this.getSmartFoodManagementEditStore()
       return (
          <EditPage
+            toggleDisplayCartFalse={toggleDisplayCartFalse}
             goBackHome={goBackHome}
             getEditPreferencesAPIError={getEditPreferencesAPIError}
             getEditPreferencesAPIStatus={getEditPreferencesAPIStatus}
             editPreferencesList={editPreferencesList}
             startDate={startDate}
             handleDateChange={handleDateChange}
+            getPreviousDate={getPreviousDate}
+            getNextDate={getNextDate}
             tabBarStatus={tabBarStatus}
             toggleDisplayCart={toggleDisplayCart}
             shouldDisplayCart={shouldDisplayCart}

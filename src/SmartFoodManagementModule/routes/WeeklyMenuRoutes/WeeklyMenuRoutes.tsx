@@ -6,7 +6,10 @@ import { AuthStore } from '../../../AuthenticationModule/stores/AuthStore'
 import { LOGIN_PATH } from '../../../AuthenticationModule/constants/NavigationConstants'
 import { RouteComponentProps } from 'react-router-dom'
 import { SmartFoodManagementStore } from '../../stores/SmartFoodManagementStore'
-import { SMART_FOOD_MANAGEMENT_HOME_PATH } from '../../constants/NavigationConstants'
+import {
+   SMART_FOOD_MANAGEMENT_HOME_PATH,
+   ADMIN_PORTAL_PATH
+} from '../../constants/NavigationConstants'
 import FoodManagementWeeklyMenu from '../../components/FoodManagementWeeklyMenu'
 
 interface WeeklyMenuRoutesProps extends RouteComponentProps {}
@@ -21,10 +24,12 @@ interface InjectedProps extends WeeklyMenuRoutesProps {
 class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
    @observable shouldDisplayCart!: boolean
    @observable tabBarStatus!: string
+   @observable shouldDisplayModal!: boolean
 
    constructor(props) {
       super(props)
       this.shouldDisplayCart = false
+      this.shouldDisplayModal = false
       this.tabBarStatus = 'Weekly Menu'
    }
 
@@ -44,9 +49,25 @@ class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
       }
    }
 
+   toggleDisplayCartFalse = () => {
+      this.shouldDisplayCart = false
+   }
+
+   toggleModal = () => {
+      {
+         this.shouldDisplayModal = this.shouldDisplayModal ? false : true
+      }
+   }
+
    onChangeHomePageRoutes = () => {
       const { history } = this.props
       history.push(SMART_FOOD_MANAGEMENT_HOME_PATH)
+   }
+
+   onChangeAdminRoutes = () => {
+      const { history } = this.props
+      alert('Hi Admin')
+      history.push(ADMIN_PORTAL_PATH)
    }
 
    signOut = () => {
@@ -57,18 +78,26 @@ class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
 
    render() {
       const {
+         toggleDisplayCartFalse,
          shouldDisplayCart,
          toggleDisplayCart,
          onChangeHomePageRoutes,
+         shouldDisplayModal,
+         toggleModal,
          signOut,
-         tabBarStatus
+         tabBarStatus,
+         onChangeAdminRoutes
       } = this
       return (
          <FoodManagementWeeklyMenu
+            toggleDisplayCartFalse={toggleDisplayCartFalse}
+            onChangeAdminRoutes={onChangeAdminRoutes}
             tabBarStatus={tabBarStatus}
             toggleDisplayCart={toggleDisplayCart}
             shouldDisplayCart={shouldDisplayCart}
             signOut={signOut}
+            toggleModal={toggleModal}
+            shouldDisplayModal={shouldDisplayModal}
             onChangeHomePageRoutes={onChangeHomePageRoutes}
          />
       )

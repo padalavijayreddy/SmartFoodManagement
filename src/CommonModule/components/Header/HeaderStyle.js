@@ -14,14 +14,33 @@ export const TopBar = styled.div`
       ${tw`w-full`}
       height:72px;
       background-color: ${colors.white};
+      position: fixed;
+      z-index: 1;
    `,
    SignOutbutton = styled.img`
       ${tw`border-gray-800 cursor-pointer h-12 w-12 rounded text-xs`}
       border-radius: 50%;
    `,
-   NotificationIcon = styled.img`
-      width: 25px;
-      height: 25px;
+   NotificationIcon = styled.button`
+      ${tw`hover:bg-blue-900 hover:text-white hover:border-3 hover:border-red-400`}
+      width: 50px;
+      height: 50px;
+      border: 2px solid black;
+      border-radius: 4px;
+      padding: 10px;
+   `,
+   NotifyNum = styled.div`
+      position: absolute;
+      top: 7px;
+      right: 140px;
+      border-radius: 50%;
+      border: 1px solid red;
+      background-color: red;
+      height: 20px;
+      width: 20px;
+      font-size: 12px;
+      padding: 2px;
+      color: white;
    `,
    HeaderNotify = styled.div`
       display: flex;

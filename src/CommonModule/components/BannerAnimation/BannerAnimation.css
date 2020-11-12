@@ -1,5 +1,8 @@
 .banner-user {
-   height: 350px;
+   position: sticky;
+   left: 0px;
+   right: 0px;
+   height: 400px;
 }
 .banner-user-elem {
    text-align: center;

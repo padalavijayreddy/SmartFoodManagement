@@ -117,6 +117,16 @@ export const Typo32DarkBlueGreyRubikRegular = styled.p`
       letter-spacing: normal;
       color: ${colors.darkBlueGrey};
    `,
+   Typo14Steel60HKGroteskRegular = styled.input`
+      font-family: HKGrotesk;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: black;
+   `,
    Typo12HKGroteskSemiBoldSteel = styled.label`
       width: 150px;
       height: 16px;

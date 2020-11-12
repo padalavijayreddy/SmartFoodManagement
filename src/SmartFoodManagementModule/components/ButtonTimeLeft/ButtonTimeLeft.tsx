@@ -4,6 +4,12 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { compareAsc } from 'date-fns'
 import { formatDistance } from 'date-fns'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure({
+   position: 'bottom-center'
+})
 
 import {
    ButtonStyles,
@@ -22,6 +28,7 @@ interface ButtonTimeProps {
    endTime: string
    deadlineTime: string
    onChangeEditPageRoutes: (status: string) => void
+   onChangeReviewPageRoutes: () => void
    mealID: number
 }
 
@@ -32,6 +39,7 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
    @observable isWithInTime!: boolean
    @observable isTimeBetweenTheMealTimings!: boolean
    @observable isReviewButtonTime!: boolean
+   @observable isResponseGiven: boolean = false
 
    componentDidMount() {
       this.renderTimeLeft()
@@ -77,7 +85,18 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
    }
 
    reviewButton = () => {
-      alert('hii')
+      const {
+         onChangeReviewPageRoutes,
+         onChangeMealType,
+         mealType
+      } = this.props
+      onChangeMealType(mealType)
+      onChangeReviewPageRoutes()
+   }
+
+   iAteItoriSkip = () => {
+      toast.success('Your Response is Saved Successfully')
+      this.isResponseGiven = true
    }
 
    render() {
@@ -85,7 +104,8 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
          timeLeft,
          isWithInTime,
          isTimeBetweenTheMealTimings,
-         isReviewButtonTime
+         isReviewButtonTime,
+         isResponseGiven
       } = this
 
       if (isWithInTime) {
@@ -110,19 +130,19 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
                ButtonStyles={DisabledButtonStyles}
             />
          )
-      } else if (isTimeBetweenTheMealTimings) {
+      } else if (isTimeBetweenTheMealTimings && !isResponseGiven) {
          return (
             <MealTime>
                <Button
                   text='I Ate it'
                   dataTestId='IAteIt-button'
-                  onClick={this.reviewButton}
+                  onClick={this.iAteItoriSkip}
                   ButtonStyles={IAteButtonStyles}
                />
                <Button
                   text='I Skipped'
                   dataTestId='ISkipped-button'
-                  onClick={this.reviewButton}
+                  onClick={this.iAteItoriSkip}
                   ButtonStyles={ISkippedButtonStyles}
                />
             </MealTime>
@@ -134,6 +154,15 @@ class ButtonTimeLeft extends Component<ButtonTimeProps> {
                dataTestId='Review-button'
                onClick={this.reviewButton}
                ButtonStyles={ReviewButtonStyles}
+            />
+         )
+      } else if (isResponseGiven && isTimeBetweenTheMealTimings) {
+         return (
+            <Button
+               text='Response Successful'
+               disabled='true'
+               dataTestId='EditClosed-button'
+               ButtonStyles={DisabledButtonStyles}
             />
          )
       }

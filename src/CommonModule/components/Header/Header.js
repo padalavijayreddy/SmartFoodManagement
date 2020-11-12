@@ -8,7 +8,8 @@ import {
    Incampus,
    SwitchIn,
    ProfileSpan,
-   SignOut
+   SignOut,
+   NotifyNum
 } from './HeaderStyle'
 import { header } from '../../i18nStrings/strings.json'
 import { Profile } from '../Profile'
@@ -18,6 +19,7 @@ import Button from '../Button/Button'
 import { CommonHeader } from '../../i18nStrings/strings.json'
 import Switch from 'react-switch'
 import { observable } from 'mobx'
+import { GoBell } from 'react-icons/go'
 
 class Header extends React.Component {
    constructor() {
@@ -53,7 +55,9 @@ class Header extends React.Component {
          signOut,
          toggleDisplayCart,
          tabBarStatus,
-         shouldDisplayCart
+         shouldDisplayCart,
+         toggleModal,
+         shouldDisplayModal
       } = this.props
       return (
          <TopBar>
@@ -96,8 +100,18 @@ class Header extends React.Component {
                   ButtonStyles={ButtonStyles}
                />
                <Profile
-                  {...{ shouldDisplayCart, toggleDisplayCart, signOut }}
+                  {...{
+                     shouldDisplayCart,
+                     toggleDisplayCart,
+                     signOut,
+                     toggleModal
+                  }}
                />
+               <Notification {...{ shouldDisplayModal, toggleModal }} />
+               <NotificationIcon onClick={toggleModal}>
+                  <GoBell size={24} />
+                  <NotifyNum>1</NotifyNum>
+               </NotificationIcon>
                <SignOut>
                   <SignOutbutton
                      data-testid={header.dataTextid}

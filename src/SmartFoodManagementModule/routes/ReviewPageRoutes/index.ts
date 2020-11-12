@@ -1,0 +1,1 @@
+export { ReviewPageRoutes } from './ReviewPageRoutes'

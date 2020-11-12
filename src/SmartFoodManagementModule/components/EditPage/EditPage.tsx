@@ -8,11 +8,14 @@ import EditPreferencesDataModel from '../../stores/models/EditPreferencesDataMod
 import { observer } from 'mobx-react'
 
 interface EditPageProps {
+   toggleDisplayCartFalse: () => void
    getEditPreferencesAPIError: string
    getEditPreferencesAPIStatus: number
    editPreferencesList: EditPreferencesDataModel
    startDate: Date
    handleDateChange: (date: any) => void
+   getPreviousDate: () => void
+   getNextDate: () => void
    shouldDisplayCart: boolean
    toggleDisplayCart: () => void
    signOut: () => void
@@ -32,6 +35,8 @@ class EditPage extends Component<EditPageProps> {
          goBackHome,
          startDate,
          handleDateChange,
+         getPreviousDate,
+         getNextDate,
          bannerDataList,
          getBannerDataAPIStatus,
          getBannerDataAPIError,
@@ -41,7 +46,7 @@ class EditPage extends Component<EditPageProps> {
          getEditPreferencesAPIStatus
       } = this.props
       return (
-         <div>
+         <div onClick={this.props.toggleDisplayCartFalse}>
             <BannerAnimation
                bannerDataList={bannerDataList}
                getBannerDataAPIStatus={getBannerDataAPIStatus}
@@ -54,6 +59,8 @@ class EditPage extends Component<EditPageProps> {
                   doNetworkCalls={doNetworkCalls}
                   startDate={startDate}
                   handleDateChange={handleDateChange}
+                  getPreviousDate={getPreviousDate}
+                  getNextDate={getNextDate}
                   editPreferencesList={editPreferencesList}
                   getEditPreferencesAPIError={getEditPreferencesAPIError}
                   getEditPreferencesAPIStatus={getEditPreferencesAPIStatus}

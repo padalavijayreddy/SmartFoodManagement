@@ -4,11 +4,15 @@ import { ProtectedRoute } from '../../CommonModule/components/ProtectedRoute'
 import {
    SMART_FOOD_MANAGEMENT_HOME_PATH,
    SMART_FOOD_MANAGEMENT_EDIT_PATH,
-   WEEKLY_MENU_PATH
+   SMART_FOOD_MANAGEMENT_REVIEW_PATH,
+   WEEKLY_MENU_PATH,
+   ADMIN_PORTAL_PATH
 } from '../../SmartFoodManagementModule/constants/NavigationConstants'
 import { HomePageRoutes } from './HomePageRoutes'
 import { WeeklyMenuRoutes } from './WeeklyMenuRoutes'
 import { EditPageRoutes } from './EditPageRoutes'
+import { ReviewPageRoutes } from './ReviewPageRoutes'
+import { AdminPageRoutes } from './AdminPageRoutes/AdminPageRoutes'
 
 export const SmartFoodManagementHomePageRoutes = [
    <ProtectedRoute
@@ -28,5 +32,21 @@ export const SmartFoodManagementEditPageRoutes = [
       key={SMART_FOOD_MANAGEMENT_EDIT_PATH}
       path={SMART_FOOD_MANAGEMENT_EDIT_PATH}
       component={EditPageRoutes}
+   />
+]
+
+export const SmartFoodManagementReviewPageRoutes = [
+   <ProtectedRoute
+      key={SMART_FOOD_MANAGEMENT_REVIEW_PATH}
+      path={SMART_FOOD_MANAGEMENT_REVIEW_PATH}
+      component={ReviewPageRoutes}
+   />
+]
+
+export const SmartFoodManagementAdminPageRoutes = [
+   <ProtectedRoute
+      key={ADMIN_PORTAL_PATH}
+      path={ADMIN_PORTAL_PATH}
+      component={AdminPageRoutes}
    />
 ]

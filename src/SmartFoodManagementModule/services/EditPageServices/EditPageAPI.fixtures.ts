@@ -4,7 +4,7 @@ class EditPageFixtureServices {
    EditPreferencesAPI = mealType => {
       // console.log('mealType1', mealType)
       return new Promise((resolve, reject) => {
-         setTimeout(() => resolve(getMealPreferences), 2000)
+         resolve(getMealPreferences)
       })
    }
 }
