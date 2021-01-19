@@ -15,7 +15,7 @@ export const TopBar = styled.div`
       height:72px;
       background-color: ${colors.white};
       position: fixed;
-      z-index: 1;
+      z-index: 2;
    `,
    SignOutbutton = styled.img`
       ${tw`border-gray-800 cursor-pointer h-12 w-12 rounded text-xs`}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { SlidebarDiv } from './styleComponents'
+import { SlidebarDiv, SlideBarSubDiv } from './styleComponents'
+import { FaChevronLeft, FaLongArrowAltLeft } from 'react-icons/fa'
 
 interface SlidebarProps {
    toggleDisplaySideBar: () => void
@@ -16,7 +17,151 @@ class SlideBar extends Component<SlidebarProps> {
       const { toggleDisplaySideBar, shouldDisplaySideBar } = this.props
       return (
          <SlidebarDiv {...{ shouldDisplaySideBar }}>
-            Hello this is Slide Bar Open
+            {/* <SlideBarSubDiv> */}
+            <FaChevronLeft />
+            Contents
+            <FaLongArrowAltLeft />
+            {/* </SlideBarSubDiv> */}
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
+            <div>
+               contents will deilvered
+               <br />
+               as soon as possible
+            </div>
          </SlidebarDiv>
       )
    }

@@ -9,6 +9,7 @@ const ProfileDiv = styled.div`
     ${tw`flex fixed top-0 right-0 z-10 w-1/4`}
     width:${props => (!props.shouldDisplayCart ? '0%' : '')};
     transition: width 0.3s;
+    overflow-y:hidden;
 `
 const DeleteButton = styled.button`
    ${tw`h-12 p-3 text-white bg-red-200 text-lg hover:bg-red-900 focus:outline-none active:outline-none leading-none`}
@@ -64,7 +65,7 @@ const AccountCenterDiv = styled.div`
 `
 
 const EmailId = styled(Typo32DarkBlueGreyHKGroteskMedium)`
-   ${tw`font-bold text-sm text-white hover:text-lg`}
+   ${tw`font-bold text-sm text-white text-lg`}
    margin-top:10px;
 `
 
@@ -77,7 +78,7 @@ const UserOptions = styled.div`
 `
 
 const Option = styled(Typo32DarkBlueGreyHKGroteskMedium)`
-   ${tw`flex w-full justify-around items-center text-white font-bold text-sm hover:text-lg`}
+   ${tw`flex w-full justify-around items-center text-white font-bold text-lg cursor-pointer hover:text-`}
 `
 
 const AccountCenter = styled.div`
