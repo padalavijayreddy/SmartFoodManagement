@@ -1,0 +1,107 @@
+.water-count-application {
+   display: flex;
+   flex-direction: column;
+   background-color: #0099ff;
+}
+
+.water-target {
+   display: flex;
+   flex-direction: column;
+   color: white;
+   justify-content: space-around;
+   align-items: center;
+   padding: 15px;
+}
+
+.water-leveler {
+   display: flex;
+   flex-direction: column-reverse;
+   width: 100px;
+   height: 250px;
+   border: 3px solid #0000ff;
+   color: black;
+   background-color: white;
+   border-bottom-left-radius: 30px;
+   border-bottom-right-radius: 30px;
+}
+
+.empty-space {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: white;
+   transition: 1s;
+   height: 0px;
+   color: blue;
+}
+
+.filled-space {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #1aa3ff;
+   transition: 1s;
+   height: 0px;
+   border-bottom-left-radius: 25px;
+   border-bottom-right-radius: 25px;
+   color: blue;
+   font-size: 30px;
+}
+
+.reset-button {
+   border: none;
+   color: white;
+   border: 1px solid blue;
+   padding: 3px;
+   border-radius: 3px;
+   font-size: 15px;
+}
+
+.water-quantity {
+   color: white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-bottom: 25px;
+}
+
+.one-liter,
+.second-liter {
+   display: flex;
+   width: 80%;
+   justify-content: space-around;
+}
+
+.glass {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 50px;
+   height: 70px;
+   margin: 5px;
+   background-color: white;
+   border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px;
+   border: 2px solid #0000ff;
+   color: #0099ff;
+}
+
+.additional-features {
+   display: flex;
+   justify-content: space-around;
+}
+
+.select-drop {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   background: transparent;
+   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+   background-repeat: no-repeat;
+   background-position-x: 100%;
+   background-position-y: 5px;
+   border: 1px solid #dfdfdf;
+   font: 12px;
+   padding: 10px;
+   margin-bottom: 10px;
+}
