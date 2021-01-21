@@ -15,30 +15,36 @@ class WaterCount extends Component {
    @observable glasses = getGlassesData
 
    @action.bound
-   makeTrueOrFalse(id: number) {
+   makeTrueOrFalse(selectedIndex: number) {
+      const isFilledAlready = this.glasses[selectedIndex].filled
       this.glasses.forEach((eachGlass, index) => {
-         if (this.glasses[eachGlass.id - 1].filled == false) {
-            if (eachGlass.id <= id + 1) {
-               this.glasses[eachGlass.id - 1].filled = true
-            }
+         if (index < selectedIndex) {
+            eachGlass.filled = true
+         } else if (index > selectedIndex) {
+            eachGlass.filled = false
+         } else {
+            const selectedIndexIsFilled = eachGlass.filled,
+               nextIndexIsFilled =
+                  this.glasses[selectedIndex + 1]?.filled ?? false
+            eachGlass.filled = !(!nextIndexIsFilled && selectedIndexIsFilled)
          }
       })
 
-      if (this.glasses[id - 1].filled == true && id != this.glasses.length) {
-         if (this.glasses[id].filled == true) {
-            this.glasses.forEach((eachGlass, index) => {
-               if (eachGlass.id > id) {
-                  this.glasses[eachGlass.id - 1].filled = false
-               }
-            })
-         } else {
-            this.glasses.forEach((eachGlass, index) => {
-               if (eachGlass.id == id) {
-                  this.glasses[eachGlass.id - 1].filled = false
-               }
-            })
-         }
-      }
+      // if (this.glasses[id - 1].filled == true && id != this.glasses.length) {
+      //    if (this.glasses[id].filled == true) {
+      //       this.glasses.forEach((eachGlass, index) => {
+      //          if (eachGlass.id > id) {
+      //             this.glasses[index].filled = false
+      //          }
+      //       })
+      //    } else {
+      //       this.glasses.forEach((eachGlass, index) => {
+      //          if (eachGlass.id == id) {
+      //             this.glasses[index].filled = false
+      //          }
+      //       })
+      //    }
+      // }
    }
 
    render() {
