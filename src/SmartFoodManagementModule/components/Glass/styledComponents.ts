@@ -7,6 +7,7 @@ import {
 import { colors } from '../../../CommonModule/components/themes/colors'
 import { css } from '@emotion/core'
 
-export const EachGlass = styled.div`
-   background-color: ${props => (props.classes == true ? '#1aa3ff' : 'white')};
+export const EachGlass = styled.div<{ status: boolean }>`
+   background-color: ${props => (props.status == true ? '#1aa3ff' : 'white')};
+   color: ${props => (props.status == true ? 'white' : '#1aa3ff')};
 `

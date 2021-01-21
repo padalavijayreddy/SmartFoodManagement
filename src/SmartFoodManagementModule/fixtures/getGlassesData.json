@@ -1,34 +1,42 @@
 [
    {
       "id": 1,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    },
    {
       "id": 2,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    },
    {
       "id": 3,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    },
    {
       "id": 4,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    },
    {
       "id": 5,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    },
    {
       "id": 6,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    },
    {
       "id": 7,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    },
    {
       "id": 8,
-      "name": "250ml"
+      "name": "250ml",
+      "filled": false
    }
 ]
