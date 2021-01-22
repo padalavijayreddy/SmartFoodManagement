@@ -10,7 +10,7 @@ import { MdHelp } from 'react-icons/md'
 import { Glass } from '../Glass'
 import { EachItem } from '../Home/styledComponents'
 
-import { EmptySpace, FilledSpace } from './styledComponents'
+import { EmptySpace, FilledSpace, PTag } from './styledComponents'
 import { EachGlass } from '../Glass/styledComponents'
 import { type } from 'os'
 
@@ -50,6 +50,7 @@ class WaterCount extends Component {
          } else {
             this.emptyHeight += 12.5
          }
+         this.emptyHeight = this.emptyHeight / 2
          this.remainingHeight = 2 - count
       })
    }
@@ -60,6 +61,11 @@ class WaterCount extends Component {
             <div className='water-target'>
                <h3>Goal: 2 liters</h3>
                <div className='water-leveler'>
+                  <PTag>
+                     {!this.filledHeight || this.remainingHeight == 2
+                        ? '2L Remaining'
+                        : ''}
+                  </PTag>
                   <FilledSpace
                      filledHeight={this.filledHeight}
                      className='filled-space'
@@ -70,7 +76,9 @@ class WaterCount extends Component {
                      emptyHeight={this.emptyHeight}
                      className='empty-space'
                   >
-                     {this.remainingHeight
+                     {this.emptyHeight &&
+                     this.remainingHeight != 0 &&
+                     this.remainingHeight != 2
                         ? `${this.remainingHeight} remaining`
                         : ''}
                   </EmptySpace>
