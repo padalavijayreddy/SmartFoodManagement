@@ -60,6 +60,12 @@ class WaterCount extends Component {
             <div className='water-target'>
                <h3>Goal: 2 liters</h3>
                <div className='water-leveler'>
+                  <FilledSpace
+                     filledHeight={this.filledHeight}
+                     className='filled-space'
+                  >
+                     {this.filledHeight ? `${this.filledHeight} %` : ''}
+                  </FilledSpace>
                   <EmptySpace
                      emptyHeight={this.emptyHeight}
                      className='empty-space'
@@ -68,12 +74,6 @@ class WaterCount extends Component {
                         ? `${this.remainingHeight} remaining`
                         : ''}
                   </EmptySpace>
-                  <FilledSpace
-                     filledHeight={this.filledHeight}
-                     className='filled-space'
-                  >
-                     {this.filledHeight ? `${this.filledHeight} %` : ''}
-                  </FilledSpace>
                </div>
             </div>
             <div className='water-quantity'>
