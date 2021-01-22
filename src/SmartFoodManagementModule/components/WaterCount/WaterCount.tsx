@@ -10,41 +10,48 @@ import { MdHelp } from 'react-icons/md'
 import { Glass } from '../Glass'
 import { EachItem } from '../Home/styledComponents'
 
+import { EmptySpace, FilledSpace } from './styledComponents'
+import { EachGlass } from '../Glass/styledComponents'
+import { type } from 'os'
+
 @observer
 class WaterCount extends Component {
    @observable glasses = getGlassesData
+   @observable remainingHeight!: number
+   @observable emptyHeight: number = 0
+   @observable filledHeight: number = 0
 
    @action.bound
    makeTrueOrFalse(selectedIndex: number) {
-      const isFilledAlready = this.glasses[selectedIndex].filled
-      this.glasses.forEach((eachGlass, index) => {
+      this.glasses.forEach((EachGlass, index) => {
          if (index < selectedIndex) {
-            eachGlass.filled = true
+            EachGlass.filled = true
          } else if (index > selectedIndex) {
-            eachGlass.filled = false
+            EachGlass.filled = false
          } else {
-            const selectedIndexIsFilled = eachGlass.filled,
-               nextIndexIsFilled =
-                  this.glasses[selectedIndex + 1]?.filled ?? false
-            eachGlass.filled = !(!nextIndexIsFilled && selectedIndexIsFilled)
+            const isSelectedIndexFilled = this.glasses[selectedIndex].filled
+            const nextToSelectedIndex =
+               this.glasses[selectedIndex + 1]?.filled ?? false
+            EachGlass.filled = !(isSelectedIndexFilled && !nextToSelectedIndex)
          }
       })
+      this.findHeightOfWaterLevel()
+   }
 
-      // if (this.glasses[id - 1].filled == true && id != this.glasses.length) {
-      //    if (this.glasses[id].filled == true) {
-      //       this.glasses.forEach((eachGlass, index) => {
-      //          if (eachGlass.id > id) {
-      //             this.glasses[index].filled = false
-      //          }
-      //       })
-      //    } else {
-      //       this.glasses.forEach((eachGlass, index) => {
-      //          if (eachGlass.id == id) {
-      //             this.glasses[index].filled = false
-      //          }
-      //       })
-      //    }
-      // }
+   @action.bound
+   findHeightOfWaterLevel() {
+      this.filledHeight = 0
+      this.remainingHeight = 0
+      let count = 0
+      this.glasses.forEach((EachGlass, index) => {
+         if (EachGlass.filled == true) {
+            this.filledHeight += 12.5
+            count = count += 0.25
+         } else {
+            this.emptyHeight += 12.5
+         }
+         this.remainingHeight = 2 - count
+      })
    }
 
    render() {
@@ -52,7 +59,22 @@ class WaterCount extends Component {
          <div className='water-count-application' id='waterCountApplication'>
             <div className='water-target'>
                <h3>Goal: 2 liters</h3>
-               <div className='water-leveler'></div>
+               <div className='water-leveler'>
+                  <EmptySpace
+                     emptyHeight={this.emptyHeight}
+                     className='empty-space'
+                  >
+                     {this.remainingHeight
+                        ? `${this.remainingHeight} remaining`
+                        : ''}
+                  </EmptySpace>
+                  <FilledSpace
+                     filledHeight={this.filledHeight}
+                     className='filled-space'
+                  >
+                     {this.filledHeight ? `${this.filledHeight} %` : ''}
+                  </FilledSpace>
+               </div>
             </div>
             <div className='water-quantity'>
                <h3>Select how many glass of water you had?</h3>

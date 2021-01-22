@@ -60,6 +60,7 @@ export const TopBar = styled.div`
       line-height: 1.71;
       letter-spacing: normal;
       border: none;
+      border-width: 0px;
    `,
    Incampus = styled(Typo20DarkBlueGreyHKGrotesk)`
       ${tw`hover:text-blue-600`}

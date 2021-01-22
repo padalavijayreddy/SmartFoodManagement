@@ -29,10 +29,13 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: white;
+   background-color: #1aa3ff;
    transition: 1s;
+   border-bottom-left-radius: 25px;
+   border-bottom-right-radius: 25px;
    height: 0px;
    color: blue;
+   text-align: center;
 }
 
 .filled-space {
