@@ -12,6 +12,7 @@ import {
    SMART_FOOD_MANAGEMENT_HOME_PATH
 } from '../../constants/NavigationConstants'
 import { format } from 'date-fns'
+import MyProjects from '../../components/MyProjects'
 
 interface MyProjectsPageRoutesProps extends RouteComponentProps {}
 
@@ -31,7 +32,7 @@ class MyProjectsPageRoutes extends React.Component<MyProjectsPageRoutesProps> {
       super(props)
       this.shouldDisplayCart = false
       this.shouldDisplayModal = false
-      this.tabBarStatus = 'HOME'
+      this.tabBarStatus = 'MY PROJECTS'
    }
 
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
@@ -78,7 +79,38 @@ class MyProjectsPageRoutes extends React.Component<MyProjectsPageRoutesProps> {
    }
 
    render() {
-      return <div>MY PROJECTS</div>
+      const {
+         shouldDisplayCart,
+         shouldDisplayModal,
+         toggleModal,
+         toggleDisplayCart,
+         toggleDisplayCartFalse,
+         onChangeWeeklyMenuRoutes,
+         onChangeHomePageRoutes,
+         signOut,
+         tabBarStatus
+      } = this
+      const {
+         bannerDataList,
+         getBannerDataAPIStatus,
+         getBannerDataAPIError,
+         menuItemsList,
+         getMenuItemsAPIStatus,
+         getMenuItemsAPIError
+      } = this.getSmartFoodManagementStore()
+      return (
+         <MyProjects
+            toggleDisplayCartFalse={toggleDisplayCartFalse}
+            tabBarStatus={tabBarStatus}
+            toggleDisplayCart={toggleDisplayCart}
+            shouldDisplayCart={shouldDisplayCart}
+            toggleModal={toggleModal}
+            shouldDisplayModal={shouldDisplayModal}
+            signOut={signOut}
+            onChangeWeeklyMenuRoutes={onChangeWeeklyMenuRoutes}
+            onChangeHomePageRoutes={onChangeHomePageRoutes}
+         />
+      )
    }
 }
 

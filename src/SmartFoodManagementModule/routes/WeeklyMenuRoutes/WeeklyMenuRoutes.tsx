@@ -66,7 +66,6 @@ class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
    }
 
    onChangeMyProjectsRoutes = () => {
-      this.tabBarStatus = 'MY PROJECTS'
       const { history } = this.props
       history.push(MY_PROJECTS)
    }
@@ -89,6 +88,7 @@ class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
          shouldDisplayCart,
          toggleDisplayCart,
          onChangeHomePageRoutes,
+         onChangeMyProjectsRoutes,
          shouldDisplayModal,
          toggleModal,
          signOut,
@@ -106,6 +106,7 @@ class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
             toggleModal={toggleModal}
             shouldDisplayModal={shouldDisplayModal}
             onChangeHomePageRoutes={onChangeHomePageRoutes}
+            onChangeMyProjectsRoutes={onChangeMyProjectsRoutes}
          />
       )
    }
