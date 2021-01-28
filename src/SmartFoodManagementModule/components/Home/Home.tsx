@@ -34,6 +34,7 @@ import { ButtonTimeLeft } from '../ButtonTimeLeft'
 import { format } from 'date-fns'
 import { GetHelp } from '../GetHelp'
 import { WaterCount } from '../WaterCount'
+import { RGBAPP } from '../RGBAPP'
 
 const MealTypeList = [
    'https://cdn.zeplin.io/5d0afc9102b7fa56760995cc/assets/2a3afcdb-6b81-44d8-beba-9992afd72ed4.svg',
@@ -189,6 +190,7 @@ class Home extends Component<HomeProps> {
             </CardDiv>
             <GetHelp />
             <WaterCount />
+            <RGBAPP />
          </HomeMainDiv>
       )
    }

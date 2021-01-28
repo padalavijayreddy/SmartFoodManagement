@@ -1,4 +1,5 @@
 export const SMART_FOOD_MANAGEMENT_HOME_PATH = '/Smart-Food-Management/home/'
+export const MY_PROJECTS = '/myProjects'
 export const SMART_FOOD_MANAGEMENT_EDIT_PATH =
    '/Smart-Food-Management/edit/:mealType'
 export const SMART_FOOD_MANAGEMENT_REVIEW_PATH =

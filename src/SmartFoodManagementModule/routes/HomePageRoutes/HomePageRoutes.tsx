@@ -8,6 +8,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { SmartFoodManagementStore } from '../../stores/SmartFoodManagementStore'
 import {
    WEEKLY_MENU_PATH,
+   MY_PROJECTS,
    SMART_FOOD_MANAGEMENT_EDIT_PATH,
    SMART_FOOD_MANAGEMENT_REVIEW_PATH
 } from '../../constants/NavigationConstants'
@@ -87,6 +88,12 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
       history.push(WEEKLY_MENU_PATH)
    }
 
+   onChangeMyProjectsRoutes = () => {
+      this.tabBarStatus = 'MY PROJECTS'
+      const { history } = this.props
+      history.push(MY_PROJECTS)
+   }
+
    onChangeEditPageRoutes = (mealStatus: string) => {
       const { history } = this.props
       const DateString = format(this.startDate, 'MM/dd/yyyy')
@@ -142,6 +149,7 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
          onChangeWeeklyMenuRoutes,
          onChangeEditPageRoutes,
          onChangeReviewPageRoutes,
+         onChangeMyProjectsRoutes,
          signOut,
          tabBarStatus,
          doNetworkCalls,
@@ -176,6 +184,7 @@ class HomePageRoutes extends React.Component<HomePageRoutesProps> {
             shouldDisplayModal={shouldDisplayModal}
             signOut={signOut}
             onChangeWeeklyMenuRoutes={onChangeWeeklyMenuRoutes}
+            onChangeMyProjectsRoutes={onChangeMyProjectsRoutes}
             onChangeEditPageRoutes={onChangeEditPageRoutes}
             onChangeReviewPageRoutes={onChangeReviewPageRoutes}
             bannerDataList={bannerDataList}

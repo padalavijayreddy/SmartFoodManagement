@@ -41,6 +41,15 @@ class Header extends React.Component {
       }
    }
 
+   onChangeMyProjects = () => {
+      const { tabBarStatus, onChangeMyProjectsRoutes } = this.props
+      if (tabBarStatus != 'MY PROJECTS') {
+         onChangeMyProjectsRoutes()
+      } else {
+         return null
+      }
+   }
+
    onChangeWeeklyMenu = () => {
       const { onChangeWeeklyMenuRoutes, tabBarStatus } = this.props
       if (tabBarStatus != 'Weekly Menu') {
@@ -62,6 +71,13 @@ class Header extends React.Component {
       return (
          <TopBar>
             <img src={header.ibhubsLogoURL}></img>
+            <Button
+               state={tabBarStatus == 'MY PROJECTS'}
+               text={CommonHeader.MyProjects}
+               onClick={this.onChangeMyProjects}
+               dataTestId='myprojects-button'
+               {...{ ButtonStyles }}
+            />
             <HeaderNotify>
                <SwitchIn>
                   <Incampus state={this.state.checked}>

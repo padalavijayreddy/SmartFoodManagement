@@ -20,6 +20,7 @@ interface HomePageProps {
    toggleModal: () => void
    signOut: () => void
    tabBarStatus: string
+   onChangeMyProjectsRoutes: () => void
    onChangeWeeklyMenuRoutes: () => void
    onChangeEditPageRoutes: (status: string) => void
    onChangeReviewPageRoutes: () => void

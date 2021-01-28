@@ -171,6 +171,7 @@
    },
    "CommonHeader": {
       "Home": "HOME",
-      "WeeklyMenu": "Weekly Menu"
+      "WeeklyMenu": "Weekly Menu",
+      "MyProjects": "MY PROJECTS"
    }
 }

@@ -7,31 +7,31 @@ import { LOGIN_PATH } from '../../../AuthenticationModule/constants/NavigationCo
 import { RouteComponentProps } from 'react-router-dom'
 import { SmartFoodManagementStore } from '../../stores/SmartFoodManagementStore'
 import {
-   SMART_FOOD_MANAGEMENT_HOME_PATH,
-   ADMIN_PORTAL_PATH,
-   MY_PROJECTS
+   WEEKLY_MENU_PATH,
+   MY_PROJECTS,
+   SMART_FOOD_MANAGEMENT_HOME_PATH
 } from '../../constants/NavigationConstants'
-import FoodManagementWeeklyMenu from '../../components/FoodManagementWeeklyMenu'
+import { format } from 'date-fns'
 
-interface WeeklyMenuRoutesProps extends RouteComponentProps {}
+interface MyProjectsPageRoutesProps extends RouteComponentProps {}
 
-interface InjectedProps extends WeeklyMenuRoutesProps {
+interface InjectedProps extends MyProjectsPageRoutesProps {
    authStore: AuthStore
    smartFoodManagementStore: SmartFoodManagementStore
 }
 
 @inject('authStore', 'smartFoodManagementStore')
 @observer
-class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
+class MyProjectsPageRoutes extends React.Component<MyProjectsPageRoutesProps> {
    @observable shouldDisplayCart!: boolean
-   @observable tabBarStatus!: string
    @observable shouldDisplayModal!: boolean
+   @observable tabBarStatus!: string
 
    constructor(props) {
       super(props)
       this.shouldDisplayCart = false
       this.shouldDisplayModal = false
-      this.tabBarStatus = 'Weekly Menu'
+      this.tabBarStatus = 'HOME'
    }
 
    getInjectedProps = (): InjectedProps => this.props as InjectedProps
@@ -65,16 +65,10 @@ class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
       history.push(SMART_FOOD_MANAGEMENT_HOME_PATH)
    }
 
-   onChangeMyProjectsRoutes = () => {
-      this.tabBarStatus = 'MY PROJECTS'
+   onChangeWeeklyMenuRoutes = () => {
+      this.tabBarStatus = 'Weekly Menu'
       const { history } = this.props
-      history.push(MY_PROJECTS)
-   }
-
-   onChangeAdminRoutes = () => {
-      const { history } = this.props
-      alert('Hi Admin')
-      history.push(ADMIN_PORTAL_PATH)
+      history.push(WEEKLY_MENU_PATH)
    }
 
    signOut = () => {
@@ -84,31 +78,8 @@ class WeeklyMenuRoutes extends React.Component<WeeklyMenuRoutesProps> {
    }
 
    render() {
-      const {
-         toggleDisplayCartFalse,
-         shouldDisplayCart,
-         toggleDisplayCart,
-         onChangeHomePageRoutes,
-         shouldDisplayModal,
-         toggleModal,
-         signOut,
-         tabBarStatus,
-         onChangeAdminRoutes
-      } = this
-      return (
-         <FoodManagementWeeklyMenu
-            toggleDisplayCartFalse={toggleDisplayCartFalse}
-            onChangeAdminRoutes={onChangeAdminRoutes}
-            tabBarStatus={tabBarStatus}
-            toggleDisplayCart={toggleDisplayCart}
-            shouldDisplayCart={shouldDisplayCart}
-            signOut={signOut}
-            toggleModal={toggleModal}
-            shouldDisplayModal={shouldDisplayModal}
-            onChangeHomePageRoutes={onChangeHomePageRoutes}
-         />
-      )
+      return <div>MY PROJECTS</div>
    }
 }
 
-export { WeeklyMenuRoutes }
+export { MyProjectsPageRoutes }
