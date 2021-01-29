@@ -48,7 +48,7 @@ export const SubParallelogramDiv = styled.div`
    align-items: center;
    height: 100% !important;
    width: 70% !important;
-   padding-left: 10px;
+   padding-left: 20px;
    -webkit-transform: skew(30deg);
    -moz-transform: skew(30deg);
    -o-transform: skew(30deg);
