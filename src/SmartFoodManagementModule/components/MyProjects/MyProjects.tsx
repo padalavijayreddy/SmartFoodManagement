@@ -7,12 +7,9 @@ import BannerDataModel from '../../stores/models/BannerDataModel'
 import MenuItemsModel from '../../stores/models/MenuItemsModel'
 import { MY_PROJECTS } from '../../constants/NavigationConstants'
 import {
-   ProjectDiv,
    ParallelogramDiv,
-   ParallelogramParentDiv,
    SubParallelogramDiv,
-   Newsimg,
-   LineDiv
+   Newsimg
 } from './styledComponents'
 import './index.css'
 
@@ -34,22 +31,14 @@ class MyProjects extends Component<MyProjectsPageProps> {
       const { toggleDisplayCartFalse } = this.props
       return (
          <div className='MyProjects-app'>
-            <ProjectDiv>My Projects</ProjectDiv>
-            <ParallelogramParentDiv>
-               <ParallelogramDiv id='parallelogram'>
-                  <Newsimg
-                     src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/newsbg.png'
-                     height='50%'
-                     width='50%'
-                  />
-                  <LineDiv></LineDiv>
-                  <SubParallelogramDiv>
-                     Uttar Pradesh's Gautam Buddh Nagar recorded 107 new
-                     Covid-19 cases on Saturday, pushing the district's
-                     infection tally to 15,803, official data showed.
-                  </SubParallelogramDiv>
-               </ParallelogramDiv>
-            </ParallelogramParentDiv>
+            <ParallelogramDiv id='parallelogram'>
+               <Newsimg src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png' />
+            </ParallelogramDiv>
+            <ParallelogramDiv id='parallelogram'>
+               <SubParallelogramDiv>
+                  This is Vijay Reddy Padala
+               </SubParallelogramDiv>
+            </ParallelogramDiv>
          </div>
       )
    }

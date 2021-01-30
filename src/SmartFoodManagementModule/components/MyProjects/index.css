@@ -1,4 +1,6 @@
 .MyProjects-app {
+   display: flex;
+   justify-content: center;
    padding-top: 50px;
    color: white;
    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
@@ -8,12 +10,13 @@
 }
 
 #parallelogram {
-   position: absolute;
+   display: flex;
+   position: relative;
    top: 130px;
    left: 10px;
-   width: 550px;
+   width: 400px;
    height: 250px;
-   background: #ffffff;
+   background: #384b88;
    border: 1px solid rgb(253, 253, 253);
    -webkit-transform: skew(-30deg);
    -moz-transform: skew(-30deg);
