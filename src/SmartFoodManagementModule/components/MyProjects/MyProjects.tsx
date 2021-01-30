@@ -7,9 +7,9 @@ import BannerDataModel from '../../stores/models/BannerDataModel'
 import MenuItemsModel from '../../stores/models/MenuItemsModel'
 import { MY_PROJECTS } from '../../constants/NavigationConstants'
 import {
-   ParallelogramDiv,
-   SubParallelogramDiv,
-   Newsimg
+   ParallelogramCard,
+   Newsimg,
+   Parallelogramproject
 } from './styledComponents'
 import './index.css'
 
@@ -30,16 +30,14 @@ class MyProjects extends Component<MyProjectsPageProps> {
    render() {
       const { toggleDisplayCartFalse } = this.props
       return (
-         <div className='MyProjects-app'>
-            <ParallelogramDiv id='parallelogram'>
-               <Newsimg src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png' />
-            </ParallelogramDiv>
-            <ParallelogramDiv id='parallelogram'>
-               <SubParallelogramDiv>
-                  This is Vijay Reddy Padala
-               </SubParallelogramDiv>
-            </ParallelogramDiv>
-         </div>
+         <Parallelogramproject>
+            <ParallelogramCard>
+               <Newsimg
+                  className='clip-animation'
+                  src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png'
+               />
+            </ParallelogramCard>
+         </Parallelogramproject>
       )
    }
 }

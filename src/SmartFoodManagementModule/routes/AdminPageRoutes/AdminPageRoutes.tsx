@@ -5,7 +5,10 @@ import { AuthStore } from '../../../AuthenticationModule/stores/AuthStore'
 import { LOGIN_PATH } from '../../../AuthenticationModule/constants/NavigationConstants'
 import { RouteComponentProps } from 'react-router-dom'
 import { SmartFoodManagementStore } from '../../stores/SmartFoodManagementStore'
-import { SMART_FOOD_MANAGEMENT_HOME_PATH } from '../../constants/NavigationConstants'
+import {
+   SMART_FOOD_MANAGEMENT_HOME_PATH,
+   MY_PROJECTS
+} from '../../constants/NavigationConstants'
 import AdminPortal from '../../components/AdminPortal'
 
 interface AdminPageRoutesProps extends RouteComponentProps {}
@@ -68,6 +71,11 @@ class AdminPageRoutes extends React.Component<AdminPageRoutesProps> {
       history.push(SMART_FOOD_MANAGEMENT_HOME_PATH)
    }
 
+   onChangeMyProjectsRoutes = () => {
+      const { history } = this.props
+      history.push(MY_PROJECTS)
+   }
+
    signOut = () => {
       this.getAuthStore().userSignOut()
       const { history } = this.props
@@ -79,6 +87,7 @@ class AdminPageRoutes extends React.Component<AdminPageRoutesProps> {
          shouldDisplayCart,
          toggleDisplayCart,
          onChangeHomePageRoutes,
+         onChangeMyProjectsRoutes,
          shouldDisplayModal,
          toggleModal,
          signOut,
@@ -99,6 +108,7 @@ class AdminPageRoutes extends React.Component<AdminPageRoutesProps> {
             toggleModal={toggleModal}
             shouldDisplayModal={shouldDisplayModal}
             onChangeHomePageRoutes={onChangeHomePageRoutes}
+            onChangeMyProjectsRoutes={onChangeMyProjectsRoutes}
          />
       )
    }

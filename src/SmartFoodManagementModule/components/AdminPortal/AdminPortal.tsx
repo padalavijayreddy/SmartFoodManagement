@@ -32,6 +32,7 @@ interface AdminPageProps {
    shouldDisplayModal: boolean
    tabBarStatus: string
    onChangeHomePageRoutes: () => void
+   onChangeMyProjectsRoutes: () => void
    toggleDisplayCartFalse: () => void
 }
 
