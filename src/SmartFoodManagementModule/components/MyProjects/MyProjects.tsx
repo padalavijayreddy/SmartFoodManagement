@@ -9,7 +9,8 @@ import { MY_PROJECTS } from '../../constants/NavigationConstants'
 import {
    ParallelogramCard,
    Newsimg,
-   Parallelogramproject
+   MYproject,
+   LinerGradientShadow
 } from './styledComponents'
 import './index.css'
 
@@ -30,14 +31,26 @@ class MyProjects extends Component<MyProjectsPageProps> {
    render() {
       const { toggleDisplayCartFalse } = this.props
       return (
-         <Parallelogramproject>
+         <MYproject>
             <ParallelogramCard>
                <Newsimg
                   className='clip-animation'
                   src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png'
                />
             </ParallelogramCard>
-         </Parallelogramproject>
+            <LinerGradientShadow>
+               <div className='gr'></div>
+               <div className='zz'>LINEAR GRADIENT BOX SHADOW</div>
+            </LinerGradientShadow>
+            <div style={{ border: '1px solid blue' }}>
+               <canvas id='stockGraph' width='150' height='150'>
+                  current stock price: $3.15 + 0.15
+               </canvas>
+               <canvas id='clock' width='150' height='150'>
+                  <img src='images/clock.png' width='150' height='150' alt='' />
+               </canvas>
+            </div>
+         </MYproject>
       )
    }
 }

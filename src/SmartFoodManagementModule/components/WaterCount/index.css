@@ -1,7 +1,7 @@
 .water-count-application {
    display: flex;
    flex-direction: column;
-   background-color: #0099ff;
+   background-color: #0d2436;
 }
 
 .water-target {
@@ -18,7 +18,7 @@
    flex-direction: column-reverse;
    width: 100px;
    height: 250px;
-   border: 3px solid #0000ff;
+   border: 3px solid #0099ff;
    color: black;
    background-color: white;
    border-bottom-left-radius: 30px;
@@ -86,7 +86,7 @@
    background-color: white;
    border-bottom-left-radius: 15px;
    border-bottom-right-radius: 15px;
-   border: 2px solid #0000ff;
+   border: 2px solid #0099ff;
    color: #0099ff;
 }
 

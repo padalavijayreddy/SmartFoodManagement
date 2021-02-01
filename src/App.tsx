@@ -20,20 +20,18 @@ class App extends React.Component {
       return (
          <Provider {...stores}>
             <I18nextProvider i18n={i18n}>
-               <Suspense fallback={<div />}>
-                  <Router basename={process.env.PUBLIC_URL}>
-                     <Switch>
-                        {AuthRoutes}
-                        {SmartFoodManagementHomePageRoutes}
-                        {SmartFoodManagementEditPageRoutes}
-                        {SmartFoodManagementReviewPageRoutes}
-                        {SmartFoodManagementAdminPageRoutes}
-                        <Route path='/'>
-                           <HomePage />
-                        </Route>
-                     </Switch>
-                  </Router>
-               </Suspense>
+               <Router basename={process.env.PUBLIC_URL}>
+                  <Switch>
+                     {AuthRoutes}
+                     {SmartFoodManagementHomePageRoutes}
+                     {SmartFoodManagementEditPageRoutes}
+                     {SmartFoodManagementReviewPageRoutes}
+                     {SmartFoodManagementAdminPageRoutes}
+                     <Route path='/'>
+                        <HomePage />
+                     </Route>
+                  </Switch>
+               </Router>
             </I18nextProvider>
          </Provider>
       )
