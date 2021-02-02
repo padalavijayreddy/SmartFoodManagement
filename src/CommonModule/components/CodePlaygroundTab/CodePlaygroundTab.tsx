@@ -6,8 +6,16 @@ class CodePlaygroundTab extends Component {
    }
    render() {
       return (
-         <div>
-            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/doctor-img.png' />
+         <div
+            style={{
+               display: 'flex',
+               justifyContent: 'center',
+               width: '100vw',
+               height: '50vh',
+               backgroundColor: '#0d2436'
+            }}
+         >
+            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/goa-c1-img.png' />
          </div>
       )
    }

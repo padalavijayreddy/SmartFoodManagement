@@ -51,6 +51,7 @@ class AdminPortal extends Component<AdminPageProps> {
    @observable languageStatus = 'Telugu'
    @observable linkToShow = 'https://www.youtube.com/embed/u6GJ1JGI0Mo'
    @observable selectedTab = 'Notes'
+   @observable show = true
 
    changeTabBarStatus = eachButton => {
       this.selectedTab = eachButton
@@ -58,6 +59,10 @@ class AdminPortal extends Component<AdminPageProps> {
 
    toggle = () => {
       this.display = !this.display
+   }
+
+   toggleTab = () => {
+      this.show = !this.show
    }
 
    toggleFalse = event => {
@@ -77,118 +82,26 @@ class AdminPortal extends Component<AdminPageProps> {
       const { shouldDisplaySideBar, toggleDisplaySideBar } = this.props
       return (
          <div>
-            <SlideBar
-               {...{
-                  shouldDisplaySideBar,
-                  toggleDisplaySideBar
-               }}
-            />
-
-            <PortalDiv
-               {...{ shouldDisplaySideBar }}
-               onClick={() => {
-                  this.props.toggleDisplayCartFalse()
-                  this.toggleFalse(event)
-               }}
-            >
-               <MainContentDiv>
-                  <HeaderContent>
-                     {shouldDisplaySideBar ? (
-                        <FcLeft size={50} onClick={toggleDisplaySideBar} />
-                     ) : (
-                        <FcRight size={50} onClick={toggleDisplaySideBar} />
-                     )}
-                     <AdminPortalP>ADMIN PORTAL</AdminPortalP>
-                  </HeaderContent>
-                  <VideoDiv>
-                     <div className='containers'>
-                        <div onClick={e => e.stopPropagation()}>
-                           <button
-                              className={cx('togglers', {
-                                 'togglers--active': this.display
-                              })}
-                              title='Change Language'
-                              onClick={this.toggle}
-                           >
-                              {this.languageStatus}
-                           </button>
-                        </div>
-                        <CSSTransition
-                           in={this.display}
-                           timeout={400}
-                           classNames='displays'
-                           unmountOnExit
-                           appear
-                        >
-                           <div className='menu-items'>
-                              <ul className='lists'>
-                                 <li
-                                    onClick={() =>
-                                       this.setLanguageStatus('English')
-                                    }
-                                    className='list-items'
-                                 >
-                                    English
-                                 </li>
-                                 <li
-                                    onClick={() =>
-                                       this.setLanguageStatus('Telugu')
-                                    }
-                                    className='list-items'
-                                 >
-                                    Telugu
-                                 </li>
-                                 <li
-                                    onClick={() =>
-                                       this.setLanguageStatus('Hindi')
-                                    }
-                                    className='list-items'
-                                 >
-                                    Hindi
-                                 </li>
-                              </ul>
-                           </div>
-                        </CSSTransition>
-                     </div>
-                     <iframe
-                        width='100%'
-                        height='600'
-                        src={this.linkToShow}
-                        frameBorder='0'
-                        overflow-y='scroll'
-                        scrolling='yes'
-                        allowFullScreen
-                        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen'
-                     ></iframe>
-                     <UserSubmissionDiv>
-                        <a className='HavingIssues' href=''>
-                           Having issues?
-                        </a>
-                        <div className='sc-sLOAN lcmFil'>
-                           <button className='SubmitFeedBack'>
-                              Submit Feedback
-                           </button>
-                        </div>
-                     </UserSubmissionDiv>
-                     <UserSubmissionColDiv>
-                        <TabBar
-                           selectedTab={this.selectedTab}
-                           changeTabBarStatus={this.changeTabBarStatus}
-                        />
-                        <TabView
-                           selectedTab={this.selectedTab}
-                           changeTabBarStatus={this.changeTabBarStatus}
-                        />
-                     </UserSubmissionColDiv>
-                  </VideoDiv>
-               </MainContentDiv>
-            </PortalDiv>
+            <UserSubmissionColDiv>
+               <TabBar
+                  selectedTab={this.selectedTab}
+                  changeTabBarStatus={this.changeTabBarStatus}
+                  show={this.show}
+                  toggleTab={this.toggleTab}
+               />
+               <TabView
+                  selectedTab={this.selectedTab}
+                  changeTabBarStatus={this.changeTabBarStatus}
+                  show={this.show}
+                  toggleTab={this.toggleTab}
+               />
+            </UserSubmissionColDiv>
          </div>
       )
    }
 }
 
-export default WithHeaderComponent(AdminPortal)
+export default AdminPortal
 
 {
    /* <div

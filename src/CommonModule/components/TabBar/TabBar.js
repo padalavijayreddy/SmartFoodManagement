@@ -4,6 +4,8 @@ import { TabBarView, Tab } from './styledComponents'
 import { tabBar } from '../../../CommonModule/i18nStrings/strings.json'
 import LoadingWrapperWithFailure from '../../common/LoadingWrapperWithFailure'
 import { observable } from 'mobx'
+import cx from 'classnames'
+import './index.css'
 
 const TabBarLIst = ['Notes', 'Discussions', 'Code Playground', 'Polls']
 
@@ -14,7 +16,14 @@ class TabBar extends React.Component {
          return (
             <Tab
                border={eachButton == this.props.selectedTab}
-               onClick={() => this.props.changeTabBarStatus(eachButton)}
+               onClick={() => {
+                  this.props.changeTabBarStatus(eachButton)
+                  this.props.toggleTab()
+               }}
+               className={cx('toggleTAB', {
+                  'toggleTAB--active': this.props.show
+               })}
+               title='Get Tab'
             >
                {eachButton}
             </Tab>

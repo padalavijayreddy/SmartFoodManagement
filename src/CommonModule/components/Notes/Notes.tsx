@@ -7,8 +7,14 @@ class Notes extends Component {
 
    render() {
       return (
-         <div>
-            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/medicalcare-img.png' />
+         <div
+            style={{
+               display: 'flex',
+               justifyContent: 'center',
+               backgroundColor: '#0d2436'
+            }}
+         >
+            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png' />
          </div>
       )
    }

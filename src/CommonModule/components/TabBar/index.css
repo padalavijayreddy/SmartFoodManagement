@@ -1,0 +1,19 @@
+:root {
+   --toggleTAB-width: 120px;
+   --toggleTAB-height: 40px;
+   --toggleTAB-bg-color: #06c;
+   --toggleTAB-active-bg-color: #2a4564;
+}
+
+.toggleTAB {
+   width: var(--toggleTAB-width);
+   height: var(--toggleTAB-height);
+   border: none;
+   outline: none;
+   cursor: pointer;
+   transition: background-color 350ms;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: white;
+}

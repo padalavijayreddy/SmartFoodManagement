@@ -13,6 +13,7 @@ import {
    LinerGradientShadow
 } from './styledComponents'
 import './index.css'
+import { TabBarCSSTransition } from '../TabBarCSSTransition'
 
 interface MyProjectsPageProps {
    toggleDisplayCartFalse: () => void
@@ -32,7 +33,7 @@ class MyProjects extends Component<MyProjectsPageProps> {
       const { toggleDisplayCartFalse } = this.props
       return (
          <MYproject>
-            <ParallelogramCard>
+            {/* <ParallelogramCard>
                <Newsimg
                   className='clip-animation'
                   src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png'
@@ -41,15 +42,8 @@ class MyProjects extends Component<MyProjectsPageProps> {
             <LinerGradientShadow>
                <div className='gr'></div>
                <div className='zz'>LINEAR GRADIENT BOX SHADOW</div>
-            </LinerGradientShadow>
-            <div style={{ border: '1px solid blue' }}>
-               <canvas id='stockGraph' width='150' height='150'>
-                  current stock price: $3.15 + 0.15
-               </canvas>
-               <canvas id='clock' width='150' height='150'>
-                  <img src='images/clock.png' width='150' height='150' alt='' />
-               </canvas>
-            </div>
+            </LinerGradientShadow> */}
+            <TabBarCSSTransition />
          </MYproject>
       )
    }

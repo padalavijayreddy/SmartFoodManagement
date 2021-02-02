@@ -1,0 +1,1 @@
+export { TabBarCSSTransition } from './TabBarCSSTransition'

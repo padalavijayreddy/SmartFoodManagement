@@ -65,5 +65,4 @@ export const UserSubmissionColDiv = styled.div`
    align-items: center;
    justify-content: space-between;
    padding-top: 10px;
-   border: 1px solid black;
 `
