@@ -14,6 +14,8 @@ import {
 } from './styledComponents'
 import './index.css'
 import { TabBarCSSTransition } from '../TabBarCSSTransition'
+import { DemoTabs } from '../DemoTabs'
+import { DemoTabs2 } from '../DemoTabs2'
 
 interface MyProjectsPageProps {
    toggleDisplayCartFalse: () => void
@@ -33,17 +35,20 @@ class MyProjects extends Component<MyProjectsPageProps> {
       const { toggleDisplayCartFalse } = this.props
       return (
          <MYproject>
-            {/* <ParallelogramCard>
-               <Newsimg
-                  className='clip-animation'
-                  src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png'
-               />
-            </ParallelogramCard>
-            <LinerGradientShadow>
-               <div className='gr'></div>
-               <div className='zz'>LINEAR GRADIENT BOX SHADOW</div>
-            </LinerGradientShadow> */}
-            <TabBarCSSTransition />
+            <DemoTabs2 />
+            <DemoTabs />
+            {/* <div style={{ display: 'flex', marginTop: '100px' }}>
+               <ParallelogramCard>
+                  <Newsimg
+                     className='clip-animation'
+                     src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png'
+                  />
+               </ParallelogramCard>
+               <LinerGradientShadow>
+                  <div className='gr'></div>
+                  <div className='zz'>LINEAR GRADIENT BOX SHADOW</div>
+               </LinerGradientShadow>
+            </div> */}
          </MYproject>
       )
    }

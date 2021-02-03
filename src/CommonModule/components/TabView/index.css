@@ -1,4 +1,4 @@
-:root {
+:root1 {
    --toggler-width: 120px;
    --toggler-height: 40px;
    --toggler-bg-color: #2a4564;
@@ -16,49 +16,41 @@
 .tab-item {
    box-sizing: border-box;
    width: 100vw;
-   height: 100vh;
-   padding: 0 20px;
+   height: 50vh;
    overflow: hidden;
    border-radius: 5px;
    font-family: 'Times New Roman', Times, serif;
    font-weight: 500;
    backface-visibility: hidden;
    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
-   transform: translateZ(0px);
 }
 
 .show-enter,
 .show-appear {
    width: 0px;
-   max-height: 20vh;
-   color: var(--fade-from-color);
-   background-color: var(--toggler-bg-color);
+   max-height: 0px;
+   color: #2a4564;
+   background-color: #2a4564;
 }
 
 .show-enter-active,
 .show-appear-active {
    width: 100vw;
-   max-height: 100vh;
-   background-color: var(--menu-item-bg-color);
+   max-height: 50vh;
+   background-color: #2a4564;
    transition: all 1000ms;
 }
 
 .show-exit {
    width: 100vw;
    max-height: 50vh;
-   background-color: var(--menu-item-bg-color);
+   background-color: #2a4564;
 }
 
 .show-exit-active {
    width: 0px;
-   max-height: 20vh;
+   max-height: 0px;
    color: var(--fade-from-color);
-   background-color: var(--toggler-bg-color);
-   transition: all 1000ms;
-}
-
-.vijay {
-   width: 100vw;
-   max-height: 50vh;
+   background-color: #2a4564;
    transition: all 1000ms;
 }

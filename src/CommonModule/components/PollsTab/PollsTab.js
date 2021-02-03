@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 class PollsTab extends Component {
    componentDidMount = () => {
+      if (this.props.show == false) {
+         this.props.toggleTab()
+      }
       console.log('Polls Tab component')
    }
    render() {

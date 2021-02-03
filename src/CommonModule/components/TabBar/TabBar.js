@@ -7,7 +7,28 @@ import { observable } from 'mobx'
 import cx from 'classnames'
 import './index.css'
 
-const TabBarLIst = ['Notes', 'Discussions', 'Code Playground', 'Polls']
+const TabBarLIst = [
+   {
+      id: 0,
+      name: 'Notes',
+      filled: false
+   },
+   {
+      id: 1,
+      name: 'Discussions',
+      filled: false
+   },
+   {
+      id: 2,
+      name: 'Code Playground',
+      filled: false
+   },
+   {
+      id: 3,
+      name: 'Polls',
+      filled: false
+   }
+]
 
 @observer
 class TabBar extends React.Component {
@@ -15,17 +36,11 @@ class TabBar extends React.Component {
       return TabBarLIst.map(eachButton => {
          return (
             <Tab
-               border={eachButton == this.props.selectedTab}
-               onClick={() => {
-                  this.props.changeTabBarStatus(eachButton)
-                  this.props.toggleTab()
-               }}
-               className={cx('toggleTAB', {
-                  'toggleTAB--active': this.props.show
-               })}
-               title='Get Tab'
+               id={eachButton.id}
+               border={eachButton.name == this.props.selectedTab}
+               onClick={() => this.props.changeTabBarStatus(eachButton.name)}
             >
-               {eachButton}
+               {eachButton.name}
             </Tab>
          )
       })

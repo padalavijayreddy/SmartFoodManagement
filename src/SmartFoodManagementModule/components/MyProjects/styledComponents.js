@@ -9,11 +9,14 @@ import { css } from '@emotion/core'
 
 export const MYproject = styled.div`
    position: relative;
-   top: 100px;
+   top: 150px;
    display: flex;
+   flex-direction: column;
    justify-content: space-around;
+   align-items: space-around;
    height: 100vh;
    width: 100vw;
+   border: 1px solid black;
 `
 
 export const ParallelogramCard = styled.div`

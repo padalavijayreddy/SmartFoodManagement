@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 
-class CodePlaygroundTab extends Component {
+class DiscussionTab extends Component {
    componentDidMount = () => {
-      console.log('CodePlayground component')
+      if (this.props.show == false) {
+         this.props.toggleTab()
+      }
+      console.log('Discussion Tab component')
    }
    render() {
       return (
@@ -15,10 +18,10 @@ class CodePlaygroundTab extends Component {
                backgroundColor: '#0d2436'
             }}
          >
-            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/goa-c1-img.png' />
+            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/hotelbg.png' />
          </div>
       )
    }
 }
 
-export { CodePlaygroundTab }
+export { DiscussionTab }

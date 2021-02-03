@@ -17,35 +17,34 @@ class TabView extends Component {
       return (
          <CSSTransition
             in={this.props.show}
-            timeout={300}
-            unmountOnExit
+            timeout={500}
             appear
             classNames='show'
          >
             <div className='tab-item'>
                {this.props.selectedTab == 'Notes' ? (
-                  <WaterCount />
+                  <Notes
+                     show={this.props.show}
+                     toggleTab={this.props.toggleTab}
+                  />
                ) : this.props.selectedTab == 'Discussions' ? (
-                  <RGBAPP />
+                  <DiscussionTab
+                     show={this.props.show}
+                     toggleTab={this.props.toggleTab}
+                  />
                ) : this.props.selectedTab == 'Code Playground' ? (
-                  <CodePlaygroundTab />
+                  <CodePlaygroundTab
+                     show={this.props.show}
+                     toggleTab={this.props.toggleTab}
+                  />
                ) : (
-                  <PollsTab />
+                  <PollsTab
+                     show={this.props.show}
+                     toggleTab={this.props.toggleTab}
+                  />
                )}
             </div>
          </CSSTransition>
-
-         // <div className='vijay'>
-         //    {this.props.selectedTab == 'Notes' ? (
-         //       <WaterCount />
-         //    ) : this.props.selectedTab == 'Discussions' ? (
-         //       <RGBAPP />
-         //    ) : this.props.selectedTab == 'Code Playground' ? (
-         //       <CodePlaygroundTab />
-         //    ) : (
-         //       <PollsTab />
-         //    )}
-         // </div>
       )
    }
 

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 
 class Notes extends Component {
    componentDidMount = () => {
+      if (this.props.show == false) {
+         this.props.toggleTab()
+      }
       console.log('Notes component')
    }
 
@@ -14,7 +17,7 @@ class Notes extends Component {
                backgroundColor: '#0d2436'
             }}
          >
-            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/arvrbg.png' />
+            <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/goa-c3-img.png' />
          </div>
       )
    }
