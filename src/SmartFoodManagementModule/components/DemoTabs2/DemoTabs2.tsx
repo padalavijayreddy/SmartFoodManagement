@@ -1,8 +1,6 @@
 import React from 'react'
-import MenuItem from '@material-ui/core/MenuItem'
-import Select from '@material-ui/core/Select'
 import SwipeableViews from 'react-swipeable-views'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import { Tab, Tabs, TabList } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 
 const TabList1 = ['Notes', 'Discussions', 'CodePlayground', 'Polls']
@@ -24,6 +22,9 @@ const styles = {
    },
    slide3: {
       backgroundColor: '#6AC0FF'
+   },
+   slide4: {
+      backgroundColor: '#d19ed9'
    }
 }
 
@@ -51,9 +52,10 @@ class DemoTabs2 extends React.Component {
       return (
          <Tabs onSelect={index => this.handleChange(index)}>
             <TabList>
-               <Tab>Title 1</Tab>
-               <Tab>Title 2</Tab>
-               <Tab>Title 3</Tab>
+               <Tab>Notes</Tab>
+               <Tab>Discussions</Tab>
+               <Tab>Code Playground</Tab>
+               <Tab>Polls</Tab>
             </TabList>
             <SwipeableViews
                animateTransitions={true}
@@ -68,6 +70,9 @@ class DemoTabs2 extends React.Component {
                </div>
                <div style={Object.assign({}, styles.slide, styles.slide3)}>
                   Component 3
+               </div>
+               <div style={Object.assign({}, styles.slide, styles.slide4)}>
+                  Component 4
                </div>
             </SwipeableViews>
          </Tabs>

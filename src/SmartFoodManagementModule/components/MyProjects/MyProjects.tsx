@@ -16,6 +16,7 @@ import './index.css'
 import { TabBarCSSTransition } from '../TabBarCSSTransition'
 import { DemoTabs } from '../DemoTabs'
 import { DemoTabs2 } from '../DemoTabs2'
+import { DemoTabs3 } from '../DemoTabs3'
 
 interface MyProjectsPageProps {
    toggleDisplayCartFalse: () => void
@@ -35,6 +36,7 @@ class MyProjects extends Component<MyProjectsPageProps> {
       const { toggleDisplayCartFalse } = this.props
       return (
          <MYproject>
+            <DemoTabs3 />
             <DemoTabs2 />
             <DemoTabs />
             {/* <div style={{ display: 'flex', marginTop: '100px' }}>
