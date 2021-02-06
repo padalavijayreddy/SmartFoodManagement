@@ -189,8 +189,6 @@ class Home extends Component<HomeProps> {
                />
             </CardDiv>
             <GetHelp />
-            <WaterCount />
-            <RGBAPP />
          </HomeMainDiv>
       )
    }

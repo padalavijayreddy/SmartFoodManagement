@@ -14,7 +14,9 @@ class Notes extends Component {
             style={{
                display: 'flex',
                justifyContent: 'center',
-               backgroundColor: '#0d2436'
+               backgroundColor: '#0d2436',
+               width: '100vw',
+               height: '50vh'
             }}
          >
             <img src='https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/goa-c3-img.png' />

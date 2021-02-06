@@ -52,12 +52,17 @@ class AdminPortal extends Component<AdminPageProps> {
    @observable linkToShow = 'https://www.youtube.com/embed/u6GJ1JGI0Mo'
    @observable selectedTab = 'Notes'
    @observable show = true
+   @observable statusBar = 'MY_PROFILE'
 
    changeTabBarStatus = eachButton => {
       if (this.selectedTab != eachButton) {
          this.selectedTab = eachButton
          this.toggleTab()
       }
+   }
+
+   changeStatusBar = (status: string) => {
+      this.statusBar = status
    }
 
    toggle = () => {
@@ -87,10 +92,13 @@ class AdminPortal extends Component<AdminPageProps> {
 
    render() {
       const { shouldDisplaySideBar, toggleDisplaySideBar } = this.props
+      const { statusBar, changeStatusBar } = this
       return (
          <div>
             <SlideBar
                {...{
+                  statusBar,
+                  changeStatusBar,
                   shouldDisplaySideBar,
                   toggleDisplaySideBar
                }}
@@ -112,6 +120,13 @@ class AdminPortal extends Component<AdminPageProps> {
                      )}
                      <AdminPortalP>ADMIN PORTAL</AdminPortalP>
                   </HeaderContent>
+                  <div className='flex p-5 h-1/4 w-1/2 status border-2 border-black m-2 justify-center items-center self-center'>
+                     {statusBar == 'MY_PROFILE'
+                        ? 'MY PROFILE'
+                        : statusBar == 'TOURNAMENTS'
+                        ? 'TOURNAMENTS'
+                        : 'LEADER_BOARD_POSITIONS'}
+                  </div>
                   <VideoDiv>
                      <div className='containers'>
                         <div onClick={e => e.stopPropagation()}>
@@ -205,53 +220,3 @@ class AdminPortal extends Component<AdminPageProps> {
 }
 
 export default WithHeaderComponent(AdminPortal)
-
-{
-   /* <div
-                  className='border:2 border-black border-solid'
-                  id='ff-compose'
-               ></div> */
-}
-{
-   /* <iframe
-                  // src='https://docs.google.com/forms/d/e/1FAIpQLScQASQh082_oQ-j666xPdnywaghO9m9qu9-oEMjIKqwm1Tc1w/viewform?embedded=true'
-                  src='https://formfacade.com/include/102575141243311825140/form/1FAIpQLScQASQh082_oQ-j666xPdnywaghO9m9qu9-oEMjIKqwm1Tc1w/bootstrap.js?div=ff-compose'
-                  width='640'
-                  height='670'
-               >
-                  Loading…
-               </iframe> */
-}
-{
-   /* <script
-                  async
-                  defer
-                  src='https://formfacade.com/include/102575141243311825140/form/1FAIpQLScQASQh082_oQ-j666xPdnywaghO9m9qu9-oEMjIKqwm1Tc1w/bootstrap.js?div=ff-compose'
-               ></script> */
-}
-{
-   /* <div id='ff-compose'></div> */
-}
-{
-   /* <iframe
-   src='https://docs.google.com/forms/d/e/1FAIpQLScQASQh082_oQ-j666xPdnywaghO9m9qu9-oEMjIKqwm1Tc1w/viewform?embedded=true&entry.1504515893=8499001239&entry.1710026095=finalAssignment1'
-   width='640'
-   height='601'
-   frameBorder='0'
-   overflow-y='scroll'
-   scrolling='yes'
->
-   Loading…
-</iframe> */
-}
-{
-   /* <iframe
-   src='https://formfacade.com/headless/102575141243311825140/home/form/1FAIpQLScQASQh082_oQ-j666xPdnywaghO9m9qu9-oEMjIKqwm1Tc1w'
-   sandbox='allow-same-origin allow-scripts allow-forms'
-   scrolling='yes'
-   frameBorder='0'
-   width='100%'
-   height='500px'
-   overflow-y='scroll'
-></iframe> */
-}

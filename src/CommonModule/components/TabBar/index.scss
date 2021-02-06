@@ -1,0 +1,15 @@
+$cyan: #00bcd4;
+$yellow: #ffeb3b;
+$grey: #9e9e9e;
+
+$num-of-tabs: 4;
+
+.slide {
+   background: $yellow;
+   width: calc(100% / #{$num-of-tabs});
+   height: 4px;
+   position: absolute;
+   left: 0;
+   top: calc(100% - 4px);
+   transition: left 0.3s ease-out;
+}

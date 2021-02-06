@@ -22,7 +22,7 @@ export const SlidebarDiv = styled.div`
    ${tw`flex flex-col justify-center items-center text-xl sticky z-1 w-1/4 text-red-400`}
    transition: width 0.3s;
    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-   width: ${props => (!props.shouldDisplaySideBar ? '0%' : '20%')};
+   width: ${props => (!props.shouldDisplaySideBar ? '0%' : '15%')};
    height: calc(100vh + 72px);
    position: fixed;
    overflow-y: scroll;
@@ -31,6 +31,6 @@ export const SlidebarDiv = styled.div`
    /* background-color: rgb(27, 43, 80); */
 `
 
-export const SlideBarSubDiv = styled.div`
+export const SlideBarSubDiv = styled(Typo12SteelHKGroteskRegular)`
    ${tw`flex`}
 `

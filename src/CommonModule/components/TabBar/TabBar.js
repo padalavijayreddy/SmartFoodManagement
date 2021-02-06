@@ -5,7 +5,7 @@ import { tabBar } from '../../../CommonModule/i18nStrings/strings.json'
 import LoadingWrapperWithFailure from '../../common/LoadingWrapperWithFailure'
 import { observable } from 'mobx'
 import cx from 'classnames'
-import './index.css'
+import './index.scss'
 
 const TabBarLIst = [
    {

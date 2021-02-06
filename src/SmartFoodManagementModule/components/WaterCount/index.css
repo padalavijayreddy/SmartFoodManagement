@@ -2,6 +2,8 @@
    display: flex;
    flex-direction: column;
    background-color: #0d2436;
+   position: relative;
+   top: 350px;
 }
 
 .water-target {

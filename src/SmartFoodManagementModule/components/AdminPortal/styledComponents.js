@@ -23,8 +23,8 @@ export const PortalDiv = styled.div`
    padding-top: 72px;
    color: white;
    background-color: white;
-   width: ${props => (!props.shouldDisplaySideBar ? '100%' : '80%')};
-   margin-left: ${props => (!props.shouldDisplaySideBar ? '' : '20%')};
+   width: ${props => (!props.shouldDisplaySideBar ? '100%' : '85%')};
+   margin-left: ${props => (!props.shouldDisplaySideBar ? '' : '15%')};
    /* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); */
 `
 export const MainContentDiv = styled.div`
@@ -62,6 +62,7 @@ export const UserSubmissionColDiv = styled.div`
    display: flex;
    flex-direction: column;
    width: 100%;
+   height: 550px;
    align-items: center;
    justify-content: space-between;
    padding-top: 10px;

@@ -14,6 +14,8 @@ export const MainDiv = styled.div<{ direction: string }>`
    border: 1px solid black;
    margin: 10px;
    display: flex;
+   position: relative;
+   top: 350px;
    flex-direction: ${props =>
       props.direction == 'row'
          ? 'row'

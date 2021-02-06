@@ -1,0 +1,24 @@
+.main_tab {
+   float: left;
+   transition: 0.5s;
+   color: white;
+   width: 100%;
+}
+
+.child_tab {
+   &:hover {
+      border-bottom-left-radius: 0%;
+      border-top-left-radius: 5px;
+      border-bottom-right-radius: 0%;
+      border-top-right-radius: 5px;
+      background-color: rgb(230, 228, 228);
+   }
+}
+
+.child_tab {
+   display: block;
+   outline: none;
+   text-align: left;
+   cursor: pointer;
+   transition: 0.7s;
+}

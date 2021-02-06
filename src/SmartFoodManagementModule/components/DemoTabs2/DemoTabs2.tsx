@@ -2,12 +2,16 @@ import React from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { Tab, Tabs, TabList } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
+import { Notes } from '../../../CommonModule/components/Notes'
+import { DiscussionTab } from '../../../CommonModule/components/DiscussionTab'
+import { CodePlaygroundTab } from '../../../CommonModule/components/CodePlaygroundTab'
+import { PollsTab } from '../../../CommonModule/components/PollsTab'
 
 const TabList1 = ['Notes', 'Discussions', 'CodePlayground', 'Polls']
 
 const styles = {
    tabs: {
-      background: '#fff'
+      transition: 'transform 1s cubic-bezier(0.15, 0.3, 0.25, 1) 0s'
    },
    slide: {
       padding: 15,
@@ -58,21 +62,21 @@ class DemoTabs2 extends React.Component {
                <Tab>Polls</Tab>
             </TabList>
             <SwipeableViews
-               animateTransitions={true}
+               style={styles.tabs}
                index={index}
                onChangeIndex={this.handleChangeIndex}
             >
                <div style={Object.assign({}, styles.slide, styles.slide1)}>
-                  Component 1
+                  <Notes />
                </div>
                <div style={Object.assign({}, styles.slide, styles.slide2)}>
-                  Component 2
+                  <DiscussionTab />
                </div>
                <div style={Object.assign({}, styles.slide, styles.slide3)}>
-                  Component 3
+                  <CodePlaygroundTab />
                </div>
                <div style={Object.assign({}, styles.slide, styles.slide4)}>
-                  Component 4
+                  <PollsTab />
                </div>
             </SwipeableViews>
          </Tabs>

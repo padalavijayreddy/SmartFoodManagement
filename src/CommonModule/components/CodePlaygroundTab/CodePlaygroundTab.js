@@ -7,6 +7,7 @@ class CodePlaygroundTab extends Component {
       }
       console.log('CodePlayground component')
    }
+
    render() {
       return (
          <div
